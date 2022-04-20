@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <section background-color="white">
+    <section background-color="white    ">
         <img src="photo/apu.jfif" alt="">
         <img src="photo/UNICLUB.png" alt="" class="img">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
