@@ -11,7 +11,7 @@
     <style>
     #img {
         border-radius: 50%;
-        display:block;
+        display: block;
         margin-left: auto;
         margin-right: auto;
     }
@@ -27,7 +27,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col" style="border-style:solid; border-spacing: 15px; border-radius: 25px;">
-                        
+
                             <br><img id="img" src="photo/musicclub.png" alt="music"><br>
                         </div>
                     </div>

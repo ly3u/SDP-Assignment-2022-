@@ -12,9 +12,12 @@
     button {
         text-align: middle;
     }
-    table, th, td {
-  border:1px solid black;
-}
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
     </style>
 </head>
 
