@@ -56,6 +56,8 @@
                                     <td>Ong</td>
                                 </tr>
                             </table><br>
+
+                            <br><img id="img" src="photo/musicclub.png" alt="music"><br>
                         </div>
                     </div>
                 </div>
