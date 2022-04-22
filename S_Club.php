@@ -19,7 +19,6 @@
     .center {
         text-align: center;
     }
-    
     </style>
 </head>
 
@@ -33,10 +32,13 @@
             <div class="col">
                 <div class="container">
                     <div class="row">
-                        <div class="col" style="border-style:solid; border-spacing: 15px; border-radius: 25px;">
+                        <div class="col"
+                            style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
                             <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
                             <b>
-                                <a href="" style="text-decoration: none; color:black;"><h3 class="center">APU Music Club</h3></a>
+                                <a href="" style="text-decoration: none; color:black;">
+                                    <h3 class="center">APU Music Club</h3>
+                                </a>
                             </b><br>
                             <table>
                                 <tr>
@@ -57,7 +59,7 @@
                                 </tr>
                             </table><br>
 
-                            <br><img id="img" src="photo/musicclub.png" alt="music"><br>
+
                         </div>
                     </div>
                 </div>
@@ -65,8 +67,36 @@
             <div class="col">
                 <div class="container">
                     <div class="row">
-                        <div class="col" style="border-style:solid; border-spacing: 15px;">
-                            Column
+                        <div class="col" >
+                        <div class="col"
+                            style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
+                            <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
+                            <b>
+                                <a href="" style="text-decoration: none; color:black;">
+                                    <h3 class="center">APU Music Club</h3>
+                                </a>
+                            </b><br>
+                            <table>
+                                <tr>
+                                    <th style="width:125px;">President: </th>
+                                    <td>Ben Ong</td>
+                                </tr>
+                                <tr>
+                                    <th>Vice President: </th>
+                                    <td>Ong</td>
+                                </tr>
+                                <tr>
+                                    <th>Email: </th>
+                                    <td>Ong@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <th>Advicer: </th>
+                                    <td>Ong</td>
+                                </tr>
+                            </table><br>
+
+
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -74,8 +104,36 @@
             <div class="col">
                 <div class="container">
                     <div class="row">
-                        <div class="col" style="border-style:solid; border-spacing: 15px;">
-                            Column
+                        <div class="col" >
+                        <div class="col"
+                            style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
+                            <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
+                            <b>
+                                <a href="" style="text-decoration: none; color:black;">
+                                    <h3 class="center">APU Music Club</h3>
+                                </a>
+                            </b><br>
+                            <table>
+                                <tr>
+                                    <th style="width:125px;">President: </th>
+                                    <td>Ben Ong</td>
+                                </tr>
+                                <tr>
+                                    <th>Vice President: </th>
+                                    <td>Ong</td>
+                                </tr>
+                                <tr>
+                                    <th>Email: </th>
+                                    <td>Ong@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <th>Advicer: </th>
+                                    <td>Ong</td>
+                                </tr>
+                            </table><br>
+
+
+                        </div>
                         </div>
                     </div>
                 </div>
