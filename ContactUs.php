@@ -41,11 +41,11 @@
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-9">
+            <div class="col-8.5">
                 <h1>Contact Us</h1>
                 <br>
                 <h3>APU Help Center</h3><br>
-                <h5>Have a question/problem?Please write here, and we will reply back soonest.</h5>
+                <h5>Have a question/problem? Please write here, and we will reply back soonest.</h5>
             </div>
             <div class="col-3">
                 <img src="photo/customer.jpg" alt="">
