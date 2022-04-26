@@ -27,10 +27,10 @@
     <b>
         <h1 align="center">Sports</h1><br>
     </b>
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <div class="col">
-                <div class="container">
+                <div class="container" >
                     <div class="row">
                         <div class="col"
                             style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
@@ -42,7 +42,7 @@
                             </b><br>
                             <table>
                                 <tr>
-                                    <th style="width:125px;">President: </th>
+                                    <th style="width:150px;">President: </th>
                                     <td>Ben Ong</td>
                                 </tr>
                                 <tr>
@@ -78,7 +78,7 @@
                             </b><br>
                             <table>
                                 <tr>
-                                    <th style="width:125px;">President: </th>
+                                    <th style="width:150px;">President: </th>
                                     <td>Ben Ong</td>
                                 </tr>
                                 <tr>
@@ -115,7 +115,7 @@
                             </b><br>
                             <table>
                                 <tr>
-                                    <th style="width:125px;">President: </th>
+                                    <th style="width:150px;">President: </th>
                                     <td>Ben Ong</td>
                                 </tr>
                                 <tr>

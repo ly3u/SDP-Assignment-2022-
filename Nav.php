@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fs-10">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="photo/apu.jfif" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -23,9 +23,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <h5><a class="nav-link active" aria-current="page" href="#">Home</a></h5>
                     </li>
-                    <li class="nav-item dropdown">
+                    <h5><li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Club
@@ -35,12 +35,12 @@
                             <li><a class="dropdown-item" href="#">Societies</a></li>
                             <li><a class="dropdown-item" href="#">International Communities</a></li>
                         </ul>
+                    </li></h5>
+                    <li class="nav-item">
+                    <h5> <a class="nav-link" href="#">Event</a></h5>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Contact Us</a>
+                    <h5>  <a class="nav-link" href="#">Contact Us</a></h5>
                     </li>
                 </ul>
 
