@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society </title>
     <!-- CSS Style -->
-    <link rel="stylesheet" href="c.css">
-    <link rel="stylesheet" href="client.css">
+    <script src="animation.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -33,29 +33,31 @@
             }
         })
     }
+   
     </script>
 </head>
 
 <body class="bg">
-<?php include 'Nav.php';?>
+    <?php include 'Nav.php';?>
     <br>
     <div class="container">
         <div class="row">
             <div class="col-8.5">
-                <h1>Contact Us</h1>
-                <br>
-                <h3>APU Help Center</h3><br>
-                <h5>Have a question/problem? Please write here, and we will reply back soonest.</h5>
+                <h1><a href="" class="typewrite" data-period="2000"
+                    data-type='[ "   Contact Us", "   APU Help Center"]'style="text-decoration: none; color:black;">
+                    <span class="wrap"></span>
+                </a></h1>
             </div>
             <div class="col-3">
-                <img src="photo/customer.jpg" alt="">
+               
             </div>
         </div>
     </div>
 
-    
+
     <br>
-    <div class="container bg1"  style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
+    <div class="container bg1"
+        style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
         <div class="row">
             <div class="col">
                 <div class="container">
@@ -146,7 +148,7 @@
             </div>
         </div>
     </div>
-    
+
     <footer class="pt-4 my-md-5 pt-md-5 border-top container">
         <small class="d-block mb-3 text-muted text-center">Copyright &copy; 2022 UniClub. All Rights Reserved.</small>
     </footer>

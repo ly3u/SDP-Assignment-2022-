@@ -39,12 +39,12 @@
         <tr>
             <th style="width:50px;"></th>
             <th style="width:650px;">
-                <h1 style="text-align:center">Member</h1>
+                <h1 style="text-align:center">Request</h1>
             </th>
             <th style="width:50px;">
                 <div class="wrapper">
                     <div class="link_wrapper">
-                        <a href="#" class="a">Request</a>
+                        <a href="#" class="a">Member</a>
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
                                 <path
@@ -66,7 +66,7 @@
                 <th>Intake</th>
                 <th>Email</th>
                 <th>Gender</th>
-                <th>Action</th>
+                <th style="padding-left:50px">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -76,7 +76,7 @@
                 <td>UCDF2007ICT</td>
                 <td>ongchengwei@gmail.com</td>
                 <td>M</td>
-                <td><button class="button">Remove</button></td>
+                <td><button class="button">Accept</button><button class="button">Reject</button></td>
             </tr>
 
         </tbody>
