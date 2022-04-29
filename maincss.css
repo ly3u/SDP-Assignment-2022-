@@ -3,7 +3,13 @@
 }
 
 body {
-  background-color: #b8e3ff;
+  background-color: #ADEFD1FF;
+    background-image:
+      linear-gradient(
+        to left, 
+        #FCC729, 
+        #337DEF
+      );
 }
 
 /* Carousel base class */

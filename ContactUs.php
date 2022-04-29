@@ -8,6 +8,7 @@
     <title>APU Club and Society </title>
     <!-- CSS Style -->
     <script src="animation.js"></script>
+    <link rel="stylesheet" href="maincss.css">
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <!-- Bootstrap -->
@@ -35,6 +36,21 @@
     }
    
     </script>
+
+    <style>
+        .button {
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px 2px;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+        border-radius: 1em;
+    }
+    </style>
 </head>
 
 <body class="bg">
@@ -135,10 +151,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-10">
-                                <br>
+                                <br><br>
                                 <h5>Thanks for Submitting!</h5>
                             </div>
-                            <div class="col">
+                            <div class="col"><br>
                                 <br><button name="send" class="button">Send Message</button>
                             </div>
                         </div>

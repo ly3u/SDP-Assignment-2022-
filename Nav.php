@@ -14,14 +14,13 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light fs-10">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="photo/apu.jfif" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="#"><img src="photo/apu.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <h5><a class="nav-link active" aria-current="page" href="#">Home</a></h5>
                     </li>
@@ -43,6 +42,14 @@
                     <h5>  <a class="nav-link" href="#">Contact Us</a></h5>
                     </li>
                 </ul>
+                <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php"><h5>Sign In</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Register.php"><h5>Sign Up</h5></a>
+                </li>
+            </ul>
 
             </div>
         </div>
