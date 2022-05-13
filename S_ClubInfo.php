@@ -6,7 +6,7 @@
 ?>
 
 <head>
-    <title>Club Information</title>
+    <title>Club Information</title>>
 </head>
 
 <body>
