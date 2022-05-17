@@ -22,8 +22,8 @@
             </div>
             <img src="https://d3s6gs1cfdg3qb.cloudfront.net/files/cd62f3f748e1eefa43297ddb2f0e43563f3ce3de0002dcdc13d146122f46eaec.jpg"
                 alt="" style="width:250px; height:250px;">
-        </div>
-
+        </div><br>
+        <center><h1>Club Annoucment</h1></center>
         <div class="bd-example">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">

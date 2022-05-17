@@ -78,7 +78,7 @@
     <br>
     <div class="container my-5">
         <div class="d-flex p-5 mb-4 rounded-3">
-            <div class="container-fluid py-5 ">
+            <div class="container-fluid py-3 ">
                 <center>
                     <h1 class="display-5 fw-bold">Past Events</h1>
                 </center>
