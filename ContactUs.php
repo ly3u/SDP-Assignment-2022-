@@ -8,7 +8,7 @@
     <title>APU Club and Society </title>
     <!-- CSS Style -->
     <script src="animation.js"></script>
-    <link rel="stylesheet" href="maincss.css">
+
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <!-- Bootstrap -->

@@ -75,7 +75,7 @@
         </div>
         <br>
         <h1 class="display-5 fw-bold">Events</h1>
-        <div class="album py-5 bg-light">
+        <div class="album py-5 " style="background-color: #FFE8D4;">
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

@@ -6,10 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
-
-    <link rel="stylesheet" href="maincss.css">
     <link rel="stylesheet" href="table.css">
-    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="b.css">
     <style>
     button {
         text-align: middle;

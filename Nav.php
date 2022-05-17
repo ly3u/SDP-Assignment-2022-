@@ -8,16 +8,62 @@
     <title>APU Club and Society</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<<<<<<< Updated upstream
-    <link rel="stylesheet" href="maincss.css">
-=======
+    <style>
+    * {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
 
->>>>>>> Stashed changes
+    body {
+        background-color: #7EB2DD;
+        
+    }
+
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light fs-10">
+    <nav class="navbar navbar-expand-lg navbar-light  fs-10" style="background-color: #FFE8D4;">
         <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="photo/apu.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" aria-current="page" href="#">Home</a></h5>
+                    </li>
+                    <h5>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Club
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Sports</a></li>
+                                <li><a class="dropdown-item" href="#">Societies</a></li>
+                                <li><a class="dropdown-item" href="#">International Communities</a></li>
+                            </ul>
+                        </li>
+                    </h5>
+                    <li class="nav-item">
+                        <h5> <a class="nav-link" href="#">Event</a></h5>
+                    </li>
+                    <li class="nav-item">
+                        <h5> <a class="nav-link" href="#">Contact Us</a></h5>
+                    </li>
+                </ul>
+
+                <button class="btn btn-outline-success" type="submit"><a href=""
+                        style="text-decoration: none; color:black;">Sign In</a></button>&nbsp &nbsp
+                <button class="btn btn-outline-success" type="submit"><a href=""
+                        style="text-decoration: none; color:black;">Sign Up</a></button>
+
+            </div>
+        </div>
+        <!-- <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="photo/apu.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,22 +94,22 @@
                         <h5> <a class="nav-link" href="#">Contact Us</a></h5>
                     </li>
                 </ul>
-                <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">
-                            <h5>Sign In</h5>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Register.php">
-                            <h5>Sign Up</h5>
-                        </a>
-                    </li>
-                </ul>
+
+
+                <a class="nav-link" href="login.php">
+                    <h5>Sign In</h5>
+                </a>
+
+
+                <a class="nav-link" href="Register.php">
+                    <h5>Sign Up</h5>
+                </a>
+
 
             </div>
-        </div>
+        </div> -->
     </nav>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

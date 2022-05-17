@@ -2,16 +2,7 @@ body{
     font-family: 'Lato', sans-serif;
   }
   
-  .wrapper{
-    position: fixed;
-    top: 33%;
-    left: 83%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .link_wrapper{
-    position: relative;
-  }
+
   
   .a{
     display: block;
