@@ -18,11 +18,20 @@
         
     }
 
+    .step {
+        text-align: center;
+
+        transition: all ease-in-out 0.3s;
+        background: #bbd6ed;
+        box-shadow: 0px 5px 50px 0px;
+        color: white;
+    }
+
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light  fs-10" style="background-color: #FFE8D4;">
+    <nav class="navbar navbar-expand-lg navbar-light step fs-10" style="background-color: #bbd6ed">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="photo/apu.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
