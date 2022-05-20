@@ -37,6 +37,7 @@
     <!-- navbar start -->
     <?php include 'Nav.php';?>
     <!-- carousel start -->
+    <br>
     <div class="container">
         <div class="row">
             <div class="col">
