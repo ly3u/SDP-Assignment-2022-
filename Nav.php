@@ -15,7 +15,7 @@
 
     body {
         background-color: #7EB2DD;
-        
+
     }
 
     .step {
@@ -26,7 +26,6 @@
         box-shadow: 0px 5px 50px 0px;
         color: white;
     }
-
     </style>
 </head>
 
@@ -65,58 +64,10 @@
                     </li>
                 </ul>
 
-                <button class="btn btn-outline-success" type="submit"><a href=""
+                <button class="btn btn-outline-success" type="submit"><a href="login.php"
                         style="text-decoration: none; color:black;">Sign In</a></button>&nbsp &nbsp
-                <button class="btn btn-outline-success" type="submit"><a href=""
-                        style="text-decoration: none; color:black;">Sign Up</a></button>
-
             </div>
         </div>
-        <!-- <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="photo/apu.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <h5><a class="nav-link active" aria-current="page" href="#">Home</a></h5>
-                    </li>
-                    <h5>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Club
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Sports</a></li>
-                                <li><a class="dropdown-item" href="#">Societies</a></li>
-                                <li><a class="dropdown-item" href="#">International Communities</a></li>
-                            </ul>
-                        </li>
-                    </h5>
-                    <li class="nav-item">
-                        <h5> <a class="nav-link" href="#">Event</a></h5>
-                    </li>
-                    <li class="nav-item">
-                        <h5> <a class="nav-link" href="#">Contact Us</a></h5>
-                    </li>
-                </ul>
-
-
-                <a class="nav-link" href="login.php">
-                    <h5>Sign In</h5>
-                </a>
-
-
-                <a class="nav-link" href="Register.php">
-                    <h5>Sign Up</h5>
-                </a>
-
-
-            </div>
-        </div> -->
     </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

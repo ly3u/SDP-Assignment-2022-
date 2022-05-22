@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+body {
+    min-height:100vh;
+    background: #ffffff;
+    
+}
+
+.header-icon {
+    background: #E1C6A9;
+}
+
+.cart {
+    margin: 20px 20px 0px 1250px;
+    width: 28px;
+    height: 30px;
+}
+
+.myacc {
+    margin: 10px 10px 0px 20px;
+    width: 28px;
+    height: 30px;
+}
+
+.header-logo {
+    padding: 0px 500px 30px 500px;
+    background: #E1C6A9;
+}
+.header-logo img{
+    height:100%
+}
+
+.header-nav {
+    overflow: hidden;
+    background: #E1C6A9;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    padding: 15px 0px 15px 50px;
+    font-weight: bold;
+}
+
+.header-nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0px 30px;
+    position: relative;
+}
+
+.navitem {
+    float: left;
+    overflow: hidden;
+}
+
+.navitem .item {
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    font-weight: bold;
+    text-transform: capitalize;
+
+}
+
+.navitem .item a {
+    position: relative;
+}
+
+.category {
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font-weight: normal;
+}
+
+.category a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.header-nav a:hover,
+.navitem:hover .item {
+    color: white;
+}
+
+.header-nav a:before,
+.navitem .item a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.header-nav a:hover:before,
+.navitem .item a:hover:before {
+    visibility: visible;
+    width: 100%;
+  }
+
+.category a:hover {
+    background-color: #E1C6A9;
+    color: #ffffff;
+}
+
+.navitem:hover .category {
+    display: block;
+}
+
+.content {
+    padding: 16px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky+.content {
+    padding-top: 60px;
+}
+
+.dropbtn {
+    background-color: #E1C6A9;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 20px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #E1C6A9; color: white;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropbtn:hover {color:black ;}
+
+@media screen and (max-width: 1500px) {
+
+    .cart {
+        margin: 20px 30px 0px 1160px;
+    }
+
+    .logo {
+        width: 430px;
+        height: 110px;
+    }
+    
+    .header-logo {
+        padding: 0px 1700px 30px 500px;
+    }
+    
+    .header-nav {
+        padding-left: 30px;
+    }
+    
+}
+
+@media screen and (max-width: 1420px) {
+
+    .cart {
+        margin: 20px 30px 0px 1080px;
+    }
+
+    .logo {
+        width: 380px;
+        height: 90px;
+    }
+    
+    .header-logo {
+        padding: 0px 1200px 30px 500px;
+    }
+    
+    .header-nav {
+        padding-left: 0px;
+    }
+    
+}
+
+@media screen and (max-width: 1330px) {
+
+    .cart {
+        margin: 20px 30px 0px 980px;
+    }
+
+    .logo {
+        width: 350px;
+        height: 80px;
+    }
+    
+    .header-logo {
+        padding: 0px 60px 30px 470px;
+    }
+
+}
+
+@media screen and (max-width: 1230px) {
+
+    .cart {
+        margin: 20px 30px 0px 880px;
+    }
+
+    .logo {
+        width: 350px;
+        height: 80px;
+    }
+    
+    .header-logo {
+        padding: 0px 70px 30px 410px;
+    }
+        
+}
+
+@media screen and (max-width: 1130px) {
+
+    .cart {
+        margin: 20px 30px 0px 760px;
+    }
+
+    .logo {
+        width: 350px;
+        height: 80px;
+    }
+    
+    .header-logo {
+        padding: 0px 90px 30px 350px;
+    }
+        
+}
+
+@media screen and (max-width: 1010px) {
+
+    .cart {
+        margin: 20px 30px 0px 650px;
+    }
+
+    .logo {
+        width: 350px;
+        height: 80px;
+    }
+    
+    .header-logo {
+        padding: 0px 100px 30px 300px;
+    }
+        
+}
+
+@media screen and (max-width: 900px) {
+
+    .cart {
+        margin: 20px 30px 0px 550px;
+    }
+
+    .logo {
+        width: 350px;
+        height: 80px;
+    }
+    
+    .header-logo {
+        padding: 0px 50px 30px 250px;
+    }
+        
+}
+
+@media screen and (max-width: 800px) {
+
+    .cart {
+        margin: 20px 30px 0px 450px;
+    }
+
+    .logo {
+        width: 330px;
+        height: 70px;
+    }
+    
+    .header-logo {
+        padding: 0px 50px 30px 200px;
+    }
+        
+}
+
+@media screen and (max-width: 700px) {
+
+    .cart {
+        margin: 20px 30px 0px 380px;
+    }
+
+    .logo {
+        width: 330px;
+        height: 70px;
+    }
+    
+    .header-logo {
+        padding: 0px 80px 30px 150px;
+    }
+ 
+}
+
+@media screen and (max-width: 630px) {
+
+    .cart {
+        margin: 20px 30px 0px 330px;
+    }
+
+    .logo {
+        width: 330px;
+        height: 70px;
+    }
+    
+    .header-logo {
+        padding: 0px 100px 30px 130px;
+    }
+  
+}
+
+@media screen and (max-width: 580px) {
+
+    .cart {
+        margin: 20px 30px 0px 280px;
+    }
+
+    .logo {
+        width: 330px;
+        height: 70px;
+    }
+    
+    .header-logo {
+        padding: 0px 120px 30px 110px;
+    }
+        
+}
+
+@media screen and (max-width: 530px) {
+
+    .cart {
+        margin: 20px 30px 0px 240px;
+    }
+
+    .logo {
+        width: 330px;
+        height: 70px;
+    }
+    
+    .header-logo {
+        padding: 0px 160px 30px 80px;
+    }
+
+    .header-nav a {
+        margin: 0px 20px;
+    }
+        
+}
