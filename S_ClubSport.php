@@ -4,7 +4,6 @@
     error_reporting(0);
     ob_start(); 
 
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ?>
 <!DOCTYPE html>
 <html lang="en">
