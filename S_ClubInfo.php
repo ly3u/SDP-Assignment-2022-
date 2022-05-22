@@ -11,7 +11,7 @@
 
 <body>
     <div class="container py-4">
-        <div class="d-flex p-5 mb-4 bg-light rounded-3">
+        <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">Custom jumbotron</h1>
                 <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one
@@ -24,9 +24,9 @@
                 alt="" style="width:250px; height:250px;">
         </div><br>
         <center><h1>Club Annoucment</h1></center>
-        <div class="bd-example">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
+        <div class="bd-example" >
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+                <div class="carousel-inner" style=" border-radius: 25px;">
                     <div class="carousel-item active">
                         <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="425"
                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide"
@@ -75,7 +75,7 @@
         </div>
         <br>
         <h1 class="display-5 fw-bold">Events</h1>
-        <div class="album py-5 " style="background-color: #FFE8D4;">
+        <div class="album py-5 " style="background-color: #FFE8D4; border-radius: 25px;">
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

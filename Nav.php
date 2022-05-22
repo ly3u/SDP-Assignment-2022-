@@ -50,7 +50,7 @@
                                 Club
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Sports</a></li>
+                                <li><a class="dropdown-item" href="S_ClubSport.php">Sports</a></li>
                                 <li><a class="dropdown-item" href="#">Societies</a></li>
                                 <li><a class="dropdown-item" href="#">International Communities</a></li>
                             </ul>
