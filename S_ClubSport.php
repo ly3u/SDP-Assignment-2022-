@@ -1,12 +1,9 @@
 <?php
     session_start();
-
     include 'config.php';
-
     error_reporting(0);
-
     ob_start(); 
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,15 +33,18 @@
 <body>
     <?php include 'Nav.php';?><br>
     <b>
-        <h1 align="center">Sports</h1><br>
+        <h1 class="center">Sports</h1><br>
     </b>
     <div class="container">
-        <?php
-                       $sql="SELECT * FROM club WHERE Categories='Sport' ";
-                        $result = mysqli_query($con, $sql);
-                       while ($data = mysqli_fetch_array($result)) {
-                       ?>
         <div class="row">
+            <?php
+            $sql="SELECT * FROM club WHERE Categories='Sport' ";
+            $result = mysqli_query($con, $sql);
+            $sportRow = mysqli_num_rows($result) > 0;
+
+            if ($sportRow) {
+                while ($row = mysqli_fetch_array($result)) {
+        ?>
             <div class="col">
                 <div class="container">
                     <div class="row">
@@ -53,107 +53,35 @@
                             <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
                             <b>
                                 <a href="" style="text-decoration: none; color:black;">
-                                    <h3 class="center"><?php echo $data["C_Name"] ?></h3>
+                                    <h3 class="center"><?php echo $row["C_Name"]; ?></h3>
                                 </a>
                             </b><br>
                             <table>
                                 <tr>
                                     <th style="width:150px;">President: </th>
-                                    <td><?php echo $data["P_Name"] ?></td>
+                                    <td><?php echo $row["P_Name"]; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Vice President: </th>
-                                    <td><?php echo $data["VP_Name"] ?></td>
+                                    <td><?php echo $row["VP_Name"]; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Email: </th>
-                                    <td><?php echo $data["C_Email"] ?></td>
+                                    <td><?php echo $row["C_Email"]; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Advicer: </th>
-                                    <td><?php echo $data["C_Advicer"] ?></td>
+                                    <td><?php echo $row["C_Advicer"]; ?></td>
                                 </tr>
                             </table><br>
-
-
-                        </div>
-                    </div>
-                 
-                </div>
-            </div>
-            <div class="col">
-                <div class="container">
-                    <div class="row">
-                        <div class="col"
-                            style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                            <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
-                            <b>
-                                <a href="" style="text-decoration: none; color:black;">
-                                    <h3 class="center">APU Music Club</h3>
-                                </a>
-                            </b><br>
-                            <table>
-                                <tr>
-                                    <th style="width:150px;">President: </th>
-                                    <td>Ben Ong</td>
-                                </tr>
-                                <tr>
-                                    <th>Vice President: </th>
-                                    <td>Ong</td>
-                                </tr>
-                                <tr>
-                                    <th>Email: </th>
-                                    <td>Ong@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <th>Advicer: </th>
-                                    <td>Ong</td>
-                                </tr>
-                            </table><br>
-
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="container">
-                    <div class="row">
-                        <div class="col"
-                            style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                            <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
-                            <b>
-                                <a href="" style="text-decoration: none; color:black;">
-                                    <h3 class="center">APU Music Club</h3>
-                                </a>
-                            </b><br>
-                            <table>
-                                <tr>
-                                    <th style="width:150px;">President: </th>
-                                    <td>Ben Ong</td>
-                                </tr>
-                                <tr>
-                                    <th>Vice President: </th>
-                                    <td>Ong</td>
-                                </tr>
-                                <tr>
-                                    <th>Email: </th>
-                                    <td>Ong@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <th>Advicer: </th>
-                                    <td>Ong</td>
-                                </tr>
-                            </table><br>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php }
+        } ?>
         </div>
         <br>
-        <?php } ?>
     </div>
 </body>
 
