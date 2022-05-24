@@ -29,7 +29,7 @@
                 <br>
                 <button class="btn btn-primary btn-lg" type="button">Join Club</button>
             </div>
-            <img src="https://d3s6gs1cfdg3qb.cloudfront.net/files/cd62f3f748e1eefa43297ddb2f0e43563f3ce3de0002dcdc13d146122f46eaec.jpg"
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['C_Logo']); ?>"
                 alt="" style="width:250px; height:250px; margin-top: 25px;">
         </div><br>
         <center>

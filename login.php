@@ -48,6 +48,7 @@
                 <div class="input-field">
                     <button name="submit" class="btn">Login</button>
                 </div>
+                <p class="login-register_exchange">Can't Login? &nbsp<a class="account_a" href="ContactUs.php">  Contact Admin</a></p>
                 <p class="home"><a href="Welcome.php" >Back to Home Page</a></p>
             </form>
         </div>

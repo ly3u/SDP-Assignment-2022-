@@ -22,6 +22,8 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        height:250px;
+        weight:250px;
     }
 
     .center {
@@ -38,7 +40,7 @@
     <div class="container">
         <div class="row">
             <?php
-            $sql="SELECT * FROM club WHERE categories='Sport' ";
+            $sql="SELECT * FROM club WHERE categories='Community' ";
             $result = mysqli_query($con, $sql);
             $sportRow = mysqli_num_rows($result) > 0;
 
@@ -52,7 +54,7 @@
                         <div class="col"
                             style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
                             <br><a href="S_ClubInfo.php?link=<?php echo $row['C_ID'] ?>"
-                                style="text-decoration: none; color:black;"><img id="img" src="photo/musicclub.png"
+                                style="text-decoration: none; color:black;"><img id="img" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['C_Logo']); ?>"
                                     alt="music"><br>
                                 <h3 class="center"><?php echo $row["C_Name"]; ?></h3>
                             </a><br>
