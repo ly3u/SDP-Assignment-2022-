@@ -50,12 +50,11 @@
                     <div class="row">
                         <div class="col"
                             style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                            <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
-                            <b>
-                                <a href="" style="text-decoration: none; color:black;">
-                                    <h3 class="center"><?php echo $row["C_Name"]; ?></h3>
-                                </a>
-                            </b><br>
+                            <br><a href="S_ClubInfo.php?link=<?php echo $row['C_ID'] ?>"
+                                style="text-decoration: none; color:black;"><img id="img" src="photo/musicclub.png"
+                                    alt="music"><br>
+                                <h3 class="center"><?php echo $row["C_Name"]; ?></h3>
+                            </a><br>
                             <table>
                                 <tr>
                                     <th style="width:150px;">President: </th>

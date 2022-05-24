@@ -2,29 +2,37 @@
 <html lang="en">
 
 <?php
+    session_start();
+    include 'config.php';
     include 'nav.php'; 
+
+    $sql=$con->prepare("SELECT C_ID, C_Name, C_Description, C_Logo,C_CoverP FROM club WHERE C_ID=?");
+    $sql->bind_param("s", $_GET['link']);
+    $sql->execute();
+    $result = $sql->get_result();
+    $row = mysqli_fetch_array($result);
+
 ?>
 
 <head>
-    <title>Club Information</title>>
+    <title>Club Information </title>>
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-                <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one
-                    in
-                    previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to
-                    your liking.</p>
-                <button class="btn btn-primary btn-lg" type="button">Example button</button>
+                <h1 class="display-5 fw-bold"><?php echo $row['C_Name']; ?></h1>
+                <p class="col-md-8 fs-4"><?php echo $row['C_Description']; ?></p>
+                <br>
+                <button class="btn btn-primary btn-lg" type="button">Join Club</button>
             </div>
             <img src="https://d3s6gs1cfdg3qb.cloudfront.net/files/cd62f3f748e1eefa43297ddb2f0e43563f3ce3de0002dcdc13d146122f46eaec.jpg"
-                alt="" style="width:250px; height:250px; margin-top:40px;">
+                alt="" style="width:250px; height:250px; margin-top: 25px;">
         </div><br>
         <center>
-            <h1>Club Annoucment</h1>
+            <h1 class="display-5 fw-bold">Club Annoucement</h1>
+            <br>
         </center>
         <div class="bd-example">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -76,7 +84,10 @@
             </div>
         </div>
         <br>
-        <h1 class="display-5 fw-bold">Events</h1>
+        <center>
+            <h1 class="display-5 fw-bold">Events</h1>
+        </center>
+        <br>
         <div class="album py-5 " style="background-color: #FFE8D4; border-radius: 25px;">
             <div class="container">
 
