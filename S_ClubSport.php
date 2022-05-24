@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row">
             <?php
-            $sql="SELECT * FROM club WHERE Categories='Sport' ";
+            $sql="SELECT * FROM club WHERE categories='Sport' ";
             $result = mysqli_query($con, $sql);
             $sportRow = mysqli_num_rows($result) > 0;
 
@@ -47,7 +47,8 @@
         ?>
             <div class="col">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" style="margin-bottom: 10px;">
+                        
                         <div class="col"
                             style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
                             <br><a href=""><img id="img" src="photo/musicclub.png" alt="music"><br></a>
@@ -62,7 +63,7 @@
                                     <td><?php echo $row["P_Name"]; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Vice President: </th>
+                                    <th>Vice  President: </th>
                                     <td><?php echo $row["VP_Name"]; ?></td>
                                 </tr>
                                 <tr>
@@ -78,6 +79,7 @@
                     </div>
                 </div>
             </div>
+            
             <?php }
         } ?>
         </div>
