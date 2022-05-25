@@ -6,6 +6,13 @@
     error_reporting(0);
 
     ob_start();
+
+    $email=$_SESSION['email'];
+
+    $sql="SELECT * FROM student_acc WHERE S_Email='$email'";
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_assoc($result);
+    $name=$row['Name'];
   
 ?>
 <!DOCTYPE html>
@@ -45,7 +52,13 @@
 <body>
 
     <!-- navbar start -->
-    <?php include 'Nav.php';?>
+    <?php
+        if(isset($email)){
+            require_once ('nav_login.php');
+        }else{
+            require_once ('Nav.php');
+        }
+    ?>
     <!-- carousel start -->
     <br>
     <div class="container">
@@ -54,7 +67,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            
+
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -64,15 +77,15 @@
                                 <div class="carousel-inner" style="border-radius: 25px;">
                                     <div class="carousel-item active">
                                         <img class="d-block w-100" style="height:567px; width:1000px;"
-                                            src="photo\cp.jpeg" alt="First slide">
+                                            src="photo\apu1.jpg" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block w-100" style="height:567px; width:1000px;"
-                                            src="140548725_178957774006596_574755887635104435_n.jpg" alt="Second slide">
+                                            src="photo\apu3.jpg" alt="Second slide">
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block w-100" style="height:567px; width:1000px;"
-                                            src="photo\apu.png" alt="Third slide">
+                                            src="photo\apu2.jpg" alt="Third slide">
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                         data-slide="prev">
@@ -129,36 +142,34 @@
                 <br>
                 <div class="container">
                     <div class="row">
+                        <?php
+            $sql="SELECT * FROM event WHERE E_Status='Accepted'LIMIT 2 ";
+            $result = mysqli_query($con, $sql);
+            $sportRow = mysqli_num_rows($result) > 0;
+
+            if ($sportRow) {
+                while ($row = mysqli_fetch_array($result)) {
+        ?>
                         <div class="col">
                             <div
                                 style="border-style:solid white; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                                <img src="photo\cp.jpeg" alt=""
-                                    style="height:250px; width: 476px; object-fit: fill; border-radius: 25px 25px 0px 0px;"><br>
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['E_Banner']); ?>"
+                                    alt=""
+                                    style="height:250px; width: 522px; object-fit: fill; border-radius: 25px 25px 0px 0px;"><br>
                                 <br>
                                 <h4>
-                                    <center>Online Chess Competition</center>
+                                    <center><?php echo $row["E_Name"]; ?></center>
                                 </h4><br>
                             </div>
                         </div>
-
-                        <div class="col">
-
-                        </div>
-                        <div class="col">
-                            <div
-                                style="border-style:solid white; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                                <img src="photo\cp.jpeg" alt=""
-                                    style="height:250px; width: 476px; object-fit: fill; border-radius: 25px 25px 0px 0px;"><br>
-                                <br>
-                                <h4>
-                                    <center>Online Chess Competition</center>
-                                </h4><br>
-                            </div>
-                        </div>
+                        <?php }} ?>
                     </div>
                     <br>
                 </div>
-                <center><h4>See More</h4></center><br>
+
+                <center>
+                    <a href="S_Event.php" style=" color:black;"><h4>See More</h4></a>
+                </center><br>
             </div>
 
         </div>

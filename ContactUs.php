@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    include 'config.php';
+    error_reporting(0);
+    ob_start(); 
+    $email=$_SESSION['email'];
+
+    $sql="SELECT * FROM student_acc WHERE S_Email='$email'";
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_assoc($result);
+    $name=$row['Name'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +39,7 @@
             text: 'We had recive your problem and will reply u ASAP ! Please Click On Continue',
             showDenyButton: false,
             showCancelButton: false,
-            confirmButtonText: '<a href="#" style="text-decoration:none; color:white; ">Continue</a>',
+            confirmButtonText: '<a href="homepage.php" style="text-decoration:none; color:white; ">Continue</a>',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -54,7 +68,13 @@
 </head>
 
 <body class="bg">
-    <?php include 'Nav.php';?>
+<?php
+        if(isset($email)){
+            require_once ('nav_login.php');
+        }else{
+            require_once ('Nav.php');
+        }
+    ?>
     <br>
     <div class="container">
         <div class="row">
@@ -121,7 +141,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Enter Full Name" required>
+                                    <input type="text" class="form-control" placeholder="Enter Full Name" required name="name">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -142,7 +162,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <textarea class="form-control" placeholder="Enter Your Message Here." name="address"
+                                <textarea class="form-control" placeholder="Enter Your Message Here." name="message"
                                     required rows="3"></textarea>
                             </div>
                         </div>
@@ -186,4 +206,17 @@
 if(isset($_POST['send'])){
     echo "<script>pop_up_success()</script>";
 }  
+        ?>
+
+<?php 
+    if (isset($_POST['send'])) {
+        /* Collect all inputted form data */
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        $sql="INSERT INTO `help`(`No`, `Name`, `Email`, `Message`) VALUES ('','$name','$email','$message')";
+        $result = mysqli_query($con, $sql);
+        echo "<script>pop_up_success()</script>";
+    }  
         ?>

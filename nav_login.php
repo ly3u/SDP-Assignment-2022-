@@ -1,3 +1,18 @@
+<?php
+    session_start();
+
+    include 'config.php';
+
+    error_reporting(0);
+
+    $email=$_SESSION['email'];
+
+    $sql="SELECT * FROM student_acc WHERE S_Email='$email'";
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_assoc($result);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +67,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="S_ClubSport.php">Sports</a></li>
                                 <li><a class="dropdown-item" href="S_ClubSociety.php">Societies</a></li>
-                                <li><a class="dropdown-item" href="S_ClubCommunity.php">International Communities</a></li>
+                                <li><a class="dropdown-item" href="S_ClubComminity.php">International Communities</a></li>
                             </ul>
                         </li>
                     </h5>
@@ -64,8 +79,18 @@
                     </li>
                 </ul>
 
-                <button class="btn btn-outline-success" type="submit"><a href="login.php"
-                        style="text-decoration: none; color:black;">Sign In</a></button>&nbsp &nbsp
+                <ul class="navbar-nav" >
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php echo $row['S_Name'] ?>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="S_profile.php">My Profile</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
             </div>
         </div>
     </nav>

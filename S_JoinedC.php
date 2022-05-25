@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    include 'config.php';
+    error_reporting(0);
+    ob_start(); 
+    $email=$_SESSION['email'];
+
+    $sql="SELECT * FROM student_acc WHERE S_Email='$email'";
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_assoc($result);
+    $name=$row['Name'];
+    $tp=$row['TP'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,17 +42,25 @@
 </head>
 
 <body>
-    <?php include 'Nav.php';?>
-    <div class="container bg-white mt-5 mb-5" style="border-radius:5%;">
+    <?php
+        if(isset($email)){
+            require_once ('nav_login.php');
+        }else{
+            require_once ('Nav.php');
+        }
+    ?>
+    <div class="container  mt-5 mb-5" style=" background-color: #FFE8D4; border-radius:5%;">
         <div class="row">
             <div class="col-md-4 border-right">
                 <div class="d-flex flex-column align-items-center  p-3 py-5">
                     <img class="rounded-circle mt-5" style="width:250px; height:300px; border-radius: 50%;"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><br>
+                        src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['S_PP']); ?>"><br>
                     <h4>----- Profile -----</h4>
-                    <button class="button3"><span>My Profile</span></button>
-                    <button class="button2"><span>Joined Club</span></button>
-                    <button class="button3"><span>Joined Event</span></button>
+                    <button class="button3"><a href="S_profile.php" style=" color:black;"><span>My
+                                Profile</span></a></button>
+                    <button class="button2"><a href="S_JoinedC.php"><span>Joined Club</span></a></button>
+                    <button class="button3"><a href="S_JoinedE.php" style=" color:black;"><span>Joined
+                                Event</span></a></button>
                 </div>
             </div>
             <div class="col-md-7 border-right">
@@ -55,27 +77,23 @@
                                 <th>Club ID</th>
                                 <th style="width:300px;">Club Name</th>
                                 <th>Action</th>
-                    
+
                             </tr>
                         </thead>
+                       
                         <tbody>
+                        <?php $sql="SELECT a.*, c.* FROM club_member c, club a WHERE c.TP='$tp' AND c.C_ID = a.C_ID ";
+        $result = mysqli_query($con, $sql);
+        while ($data = mysqli_fetch_array($result)) { 
+            ?>
                             <tr>
-                                <td>TP061505</td>
-                                <td>Ong Cheng Wei</td>
+                                <td><?php echo $data["C_ID"]; ?></td>
+                                <td><?php echo $data["C_Name"]; ?></td>
                                 <th>Leave</th>
                             </tr>
-                            <tr>
-                                <td>TP061505</td>
-                                <td>Ong Cheng Wei</td>
-                                <th>Leave</th>
-                            </tr>
-                            <tr>
-                                <td>TP061505</td>
-                                <td>Ong Cheng Wei</td>
-                                <th>Leave</th>
-                            </tr>
-
+                            <?php }?>
                         </tbody>
+                    
                     </table>
                 </div>
             </div>
@@ -84,8 +102,14 @@
     </div>
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 </body>
 </body>

@@ -47,12 +47,12 @@
         }
     ?><br>
     <b>
-        <h1 class="center">Sports</h1><br>
+        <h1 class="center">International Communities</h1><br>
     </b>
     <div class="container">
         <div class="row">
             <?php
-            $sql="SELECT * FROM club WHERE categories='Sport' ";
+            $sql="SELECT * FROM club WHERE categories='Community' ";
             $result = mysqli_query($con, $sql);
             $sportRow = mysqli_num_rows($result) > 0;
 
