@@ -46,6 +46,33 @@
     .left {
         padding-left: 30px;
     }
+    .footer-basic {
+    position: relative;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    color:#4b4c4d;
+    width: 100%;
+    list-style:none;
+    text-align:center;
+    font-size:18px !important;
+    line-height:1.6;
+    margin-bottom:0;
+}
+.footer-basic a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+}
+.footer-basic :hover {
+    background-color: #b9b9b9;
+    opacity:1;
+}
+.copyright {
+    font-size:13px;
+    color:#aaa;
+    width: 110px;
+    }
+* {box-sizing:border-box}
     </style>
 </head>
 
@@ -143,7 +170,7 @@
                 <div class="container">
                     <div class="row">
                         <?php
-            $sql="SELECT * FROM event WHERE E_Status='Accepted'LIMIT 2 ";
+            $sql="SELECT * FROM event WHERE E_Status='ongoing'LIMIT 2 ";
             $result = mysqli_query($con, $sql);
             $sportRow = mysqli_num_rows($result) > 0;
 
@@ -153,13 +180,13 @@
                         <div class="col">
                             <div
                                 style="border-style:solid white; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['E_Banner']); ?>"
+                                <a href="S_EventDetail.php?Eid=<?php echo $row['E_ID'] ?>" style="text-decoration: none; color:black;"><img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['E_Banner']); ?>"
                                     alt=""
                                     style="height:250px; width: 522px; object-fit: fill; border-radius: 25px 25px 0px 0px;"><br>
                                 <br>
                                 <h4>
                                     <center><?php echo $row["E_Name"]; ?></center>
-                                </h4><br>
+                                </h4></a><br>
                             </div>
                         </div>
                         <?php }} ?>
@@ -174,6 +201,10 @@
 
         </div>
     </div>
+    <div class="footer-basic">
+            <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a href="contactus.php">Contact Us</a>
+            <p class="copyright" id="center">UniClub © 2021</p>
+        </div>
 
 
 

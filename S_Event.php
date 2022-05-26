@@ -74,7 +74,7 @@
         <div class="row">
             <div class="col">
                 <div class="container">
-                    <?php $sql="SELECT * FROM event WHERE E_Status='Accepted'";
+                    <?php $sql="SELECT * FROM event WHERE E_Status='ongoing'";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($result)) { 
             ?>
@@ -89,7 +89,7 @@
                                     <th style="width:100%;"><a href="" style="text-decoration: none; color:black;">
                                             <h3 class="left"><?php echo $row["E_Name"]; ?></h3>
                                         </a></th>
-                                    <td class="right"><button class="button">Detail</button></td>
+                                    <td class="right"><a href="S_EventDetail.php?Eid=<?php echo $row['E_ID'] ?>"><button class="button">Detail</button></a></td>
                                 </tr>
                             </table><br>
                         </div>

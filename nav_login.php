@@ -67,7 +67,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="S_ClubSport.php">Sports</a></li>
                                 <li><a class="dropdown-item" href="S_ClubSociety.php">Societies</a></li>
-                                <li><a class="dropdown-item" href="S_ClubComminity.php">International Communities</a></li>
+                                <li><a class="dropdown-item" href="S_ClubCommity.php">International Communities</a></li>
                             </ul>
                         </li>
                     </h5>

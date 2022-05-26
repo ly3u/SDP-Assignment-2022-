@@ -13,6 +13,8 @@
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_assoc($result);
     $name=$row['Name'];
+
+    $EID = $_GET['Eid']; 
   
 ?>
 <!DOCTYPE html>
@@ -76,31 +78,35 @@
                 <div class="container">
 
                     <div class="col">
+                        <?php $sql="SELECT * FROM event WHERE E_ID = '$EID'";
+        $result = mysqli_query($con, $sql);
+        while ($data = mysqli_fetch_array($result)) { 
+            ?>
                         <div
                             style="border-style:solid white; background-color:white; border-spacing: 15px; border-radius: 25px;">
                             <img id="img"
-                                src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['E_Banner']); ?>"
+                                src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($data['E_Banner']); ?>"
                                 alt="music" style="height:400px; width:1068px; border-radius: 25px 25px 0px 0px;"><br>
 
                             <table>
                                 <tr>
-                                <th style="width:90%;">
-                                            <h3 class="left">name</h3>
-                                        </th>
+                                    <th style="width:90%;">
+                                        <h3 class="left"><?php echo $data["E_Name"]; ?></h3>
+                                    </th>
                                     <th></th>
-                                    <td class="right"><button class="button">&nbsp;  Join &nbsp; </button></td>
+                                    <td class="right"><button class="button">&nbsp; Join &nbsp; </button></td>
                                 </tr>
                             </table><br>
-                           <div class="left">
-                                <h6 >HEh hahah jajaj joj jojdbahsvda gdybehjdvw gyegfgagsfu hfhaiufoiahd</h6>
-                                <h6>🏫 Organizer: Badmiuton</h6>
-                                <h6>📅 Date: 17-6</h6>
-                                <h6>🕐 Time: </h6>
-                                <h6>⌛ Duration: 2hr</h6>
-                           </div><br>   
+                            <div class="left">
+                                <h6><?php echo $data["E_Description"]; ?></h6>
+                                <h6>🏫 Organizer: <?php echo $data["E_Name"]; ?></h6>
+                                <h6>📅 Date: <?php echo $data["E_Day"]; ?></h6>
+                                <h6>🕐 Time: <?php echo $data["E_Time"]; ?></h6>
+                                <h6>⌛ Duration: <?php echo $data["E_Duration"]; ?></h6>
+                            </div><br>
                         </div>
                     </div><br>
-
+                    <?php } ?>
                 </div>
                 <br>
             </div>

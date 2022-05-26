@@ -78,6 +78,7 @@
                                 <th style="width: 180px;">Event Name</th>
                                 <th style="width: 120px;">Event Day</th>
                                 <th style="width: 120px;">Event Time</th>
+                                <th style="width: 120px;">Event Status</th>
                                 <th>Action</th>
                     
                             </tr>
@@ -92,7 +93,8 @@
                                 <td><?php echo $data["E_Name"]; ?></td>
                                 <td><?php echo $data["E_Day"]; ?></td>
                                 <td><?php echo $data["E_Time"]; ?></td>
-                                <td>Feedback</td>
+                                <td><?php echo $data["E_Status"]; ?></td>
+                                <td><?php if($data['E_Status']=='ongoing'){?><button>Feedback</button><?php}else{?><button>Feedback</button><?php }?></td>
                             </tr>
                         <?php } ?>
                         </tbody>
