@@ -4,22 +4,27 @@
 <?php
     session_start();
     include 'config.php';
-    include 'nav.php';
-    
     // error_reporting(0);
 
-    $sql=$con->prepare("SELECT C_ID, C_Name, C_Description, C_Logo,C_CoverP FROM club WHERE C_ID=?");
-    $sql->bind_param("s", $_GET['link']);
-    $sql->execute();
-    $result = $sql->get_result();
-    $row = mysqli_fetch_array($result);
+    $email=$_SESSION['email'];
+    $sql5="SELECT * FROM student_acc WHERE S_Email='$email'";
+    $result5=mysqli_query($con, $sql5);
+    $row5=mysqli_fetch_assoc($result5);
+    $name=$row5['S_Name'];
+    $tp = $row5['TP'];
+
+    $sql6=$con->prepare("SELECT C_ID, C_Name, C_Description, C_Logo,C_CoverP FROM club WHERE C_ID=?");
+    $sql6->bind_param("s", $_GET['link']);
+    $sql6->execute();
+    $result6 = $sql6->get_result();
+    $row6 = mysqli_fetch_array($result6);
 
     $sql1=$con->prepare("SELECT * FROM announcement WHERE C_ID=?");
     $sql1->bind_param("s", $_GET['link']);
     $sql1->execute();
     $result1 = $sql1->get_result();
 
-    $sql2=$con->prepare("SELECT E_Name, C_ID, E_Banner, E_Day, E_Status FROM event WHERE C_ID=? and E_Status = 'ongoing' ORDER BY E_Day");
+    $sql2=$con->prepare("SELECT * FROM event WHERE C_ID=? and E_Status = 'ongoing' ORDER BY E_Day");
     $sql2->bind_param("s", $_GET['link']);
     $sql2->execute();
     $result2 = $sql2->get_result();
@@ -27,19 +32,26 @@
 ?>
 
 <head>
-    <title>Club Information </title>>
+    <title>Club Information </title>
 </head>
 
 <body>
+<?php
+        if(isset($email)){
+            require_once ('nav_login.php');
+        }else{
+            require_once ('Nav.php');
+        }
+    ?>
     <div class="container py-4">
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold"><?php echo $row['C_Name']; ?></h1>
-                <p class="col-md-8 fs-4"><?php echo $row['C_Description']; ?></p>
+                <h1 class="display-5 fw-bold"><?php echo $row6['C_Name']; $CID=$row6['C_ID'];?></h1>
+                <p class="col-md-8 fs-4"><?php echo $row6['C_Description']; ?></p>
                 <br>
-                <button class="btn btn-primary btn-lg" type="button">Join Club</button>
+                <button class="btn btn-primary btn-lg" type="button" name="join">Join Club</button>
             </div>
-            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['C_Logo']); ?>" alt=""
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row6['C_Logo']); ?>" alt=""
                 style="width:250px; height:250px; margin-top: 25px;">
         </div><br>
         <div class="bd-example">
@@ -102,7 +114,7 @@
                                 <h3 class="card-text fw-bold"><?php echo $row2['E_Name']; ?></h3>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="S_EventDetail.php?Eid=<?php echo $row2['E_ID'] ?>" style=" color:black;">Details</a></button>
                                     </div>
                                 </div>
                             </div>
@@ -116,3 +128,29 @@
 </body>
 
 </html>
+
+<?php 
+            if(isset($_POST['join'])) {
+                $sql10 = "SELECT * FROM club_member WHERE C_ID='$CID' AND TP='$tp'";
+                // $result1 = mysqli_query($con, $sql10);
+                // $X =mysqli_num_rows($result1);
+            //     if(isset($email)){
+                
+            //       if($X > 0){
+            //          /* Collect all inputted form data */
+            //             echo  "<script>pop_up()</script>";
+            //         }else{
+                        
+            //             $tp = $row['TP'];
+            //             echo  "<script>pop_up_success()</script>";
+            //             $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`) VALUES ('$EID','$tp')";
+            //             $result2 = mysqli_query($con, $sql2);
+            //         }
+            //     }else{
+            //         $url= "login.php";
+            // header("Location:" .$url);
+            //     }
+                }
+            
+
+        ?>
