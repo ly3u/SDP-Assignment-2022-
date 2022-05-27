@@ -57,7 +57,7 @@
                 popup: 'animate_animated animate_fadeOutUp'
             }
         })
-    }
+    };
 
     function pop_up() {
         Swal.fire({
@@ -71,7 +71,19 @@
                 popup: 'animate_animated animate_fadeOutUp'
             }
         })
-    }
+    };
+
+    function feedbackPopUp() {
+        Swal.fire({
+            title: 'Please Enter Your Feedback:',
+            input: 'text',
+            showCancelButton: true,
+            confirmButtonText: 'Confirm',
+        }).then((result) => {
+            if (result.value) {
+                console.log("Result: " + result.value);
+            }
+        });
     </script>
 </head>
 
@@ -169,6 +181,10 @@
                 echo  "<script>pop_up_success()</script>";
                 $sql1 = "DELETE FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
                 $result1 = mysqli_query($con, $sql1);
+                }
+
+            if(isset($_POST['feedback'])) {
+                echo  "<script>feedbackPopUp()</script>";               
                 }
             
 

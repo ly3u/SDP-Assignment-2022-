@@ -57,9 +57,8 @@
                         </div>
                         <?php while ($row1 = mysqli_fetch_array($result1)) { ?>
                         <div class="carousel-item">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="425"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800"
+                                height="425">
                                 <rect width="100%" height="100%" fill="#bbd6ed" />
                                 <text class="display-7" x="15%" y="20%" fill="#111" dy=".3em">Date
                                     Posted: <?php echo $row1['Date_Post']; ?>
@@ -96,7 +95,7 @@
                     <?php while ($row2 = mysqli_fetch_array($result2)) { ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img id="img" width="411" height="225"
+                            <img id="img" height="225"
                                 src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row2['E_Banner']); ?>"
                                 alt="banner">
                             <div class="card-body" style="height:150px;">
