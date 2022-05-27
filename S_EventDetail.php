@@ -25,7 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
@@ -57,6 +57,37 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+        function pop_up_success(){
+                Swal.fire({
+                    icon:'success',
+                    title: 'Success', 
+                    text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: '<a href="" style="text-decoration:none; color:white; ">Continue</a>',
+                    showClass: {
+                        popup: 'animate_animated animate_fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate_animated animate_fadeOutUp'
+                    }
+                })
+            }
+            function pop_up(){
+                Swal.fire({
+                    icon:'error',
+                    title: 'Oops',
+                    text: 'You Had Already Joined This Event !',
+                    showClass: {
+                        popup: 'animate_animated animate_fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate_animated animate_fadeOutUp'
+                    }
+                })
+            }
+    </script>
 </head>
 
 <body>
@@ -94,7 +125,7 @@
                                         <h3 class="left"><?php echo $data["E_Name"]; ?></h3>
                                     </th>
                                     <th></th>
-                                    <td class="right"><button class="button">&nbsp; Join &nbsp; </button></td>
+                                    <td class="right"><form method="POST"><button class="button" name="join">&nbsp; Join &nbsp; </button></form></td>
                                 </tr>
                             </table><br>
                             <div class="left">
@@ -116,3 +147,22 @@
 </body>
 
 </html>
+
+<?php 
+            if(isset($_POST['join'])) {
+                $sql1 = "SELECT * FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
+                $result1 = mysqli_query($con, $sql1);
+                if(!$result1->num_rows > 0){
+                    /* Collect all inputted form data */
+                    $tp = $row['TP'];
+                    echo  "<script>pop_up_success()</script>";
+                    $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`) VALUES ('$EID','$tp')";
+                    $result2 = mysqli_query($con, $sql2);
+                }else{
+                    echo  "<script>pop_up()</script>";
+                }
+            
+                }
+            
+
+        ?>

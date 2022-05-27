@@ -94,7 +94,8 @@
                                 <td><?php echo $data["E_Day"]; ?></td>
                                 <td><?php echo $data["E_Time"]; ?></td>
                                 <td><?php echo $data["E_Status"]; ?></td>
-                                <td><?php if($data['E_Status']=='ongoing'){?><button>Feedback</button><?php}else{?><button>Feedback</button><?php }?></td>
+                                <td><?php if($data["E_Status"]=='ongoing'){?>Leave<?php } ?>
+                                <?php if($data["E_Status"]=='Ended'){?>Feedback<?php } ?></td>
                             </tr>
                         <?php } ?>
                         </tbody>
