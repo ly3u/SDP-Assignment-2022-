@@ -46,7 +46,7 @@
     <div class="container py-4">
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold"><?php echo $row6['C_Name']; ?></h1>
+                <h1 class="display-5 fw-bold"><?php echo $row6['C_Name']; $CID=$row6['C_ID'];?></h1>
                 <p class="col-md-8 fs-4"><?php echo $row6['C_Description']; ?></p>
                 <br>
                 <button class="btn btn-primary btn-lg" type="button" name="join">Join Club</button>
@@ -128,3 +128,29 @@
 </body>
 
 </html>
+
+<?php 
+            if(isset($_POST['join'])) {
+                $sql10 = "SELECT * FROM club_member WHERE C_ID='$CID' AND TP='$tp'";
+                // $result1 = mysqli_query($con, $sql10);
+                // $X =mysqli_num_rows($result1);
+            //     if(isset($email)){
+                
+            //       if($X > 0){
+            //          /* Collect all inputted form data */
+            //             echo  "<script>pop_up()</script>";
+            //         }else{
+                        
+            //             $tp = $row['TP'];
+            //             echo  "<script>pop_up_success()</script>";
+            //             $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`) VALUES ('$EID','$tp')";
+            //             $result2 = mysqli_query($con, $sql2);
+            //         }
+            //     }else{
+            //         $url= "login.php";
+            // header("Location:" .$url);
+            //     }
+                }
+            
+
+        ?>
