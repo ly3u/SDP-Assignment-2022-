@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    include 'config.php';
+    error_reporting(0);
+    ob_start(); 
+    $cid=$_SESSION['club'];
+
+    $sql="SELECT * FROM club WHERE C_Email='$cid'";
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_assoc($result);
+    $c_id = $row['C_ID'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +46,7 @@
 </head>
 
 <body>
-    <?php include 'Nav.php'?>
+    <?php include 'nav_club.php'?>
     <br>
     <table style="width:80%; margin:auto;">
         <tr>
@@ -44,7 +57,7 @@
             <th style="width:50px;">
                 <div class="wrapper">
                     <div class="link_wrapper">
-                        <a href="#" class="a">Member</a>
+                        <a href="CMT_ClubMember.php" class="a">Member</a>
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
                                 <path
@@ -70,15 +83,19 @@
             </tr>
         </thead>
         <tbody>
+        <?php $sql1="SELECT a.*, c.* FROM p_club_member c, student_acc a WHERE c.C_ID = '$c_id' AND c.TP = a.TP ";
+              $result1 = mysqli_query($con, $sql1);
+            while ($data = mysqli_fetch_array($result1)) { 
+            ?>
             <tr>
-                <td>TP061505</td>
-                <td>Ong Cheng Wei</td>
-                <td>UCDF2007ICT</td>
-                <td>ongchengwei@gmail.com</td>
-                <td>M</td>
+                <td><?php echo $data["TP"]; ?></td>
+                <td><?php echo $data["S_Name"]; ?></td>
+                <td><?php echo $data["Intake"]; ?></td>
+                <td><?php echo $data["S_Email"]; ?></td>
+                <td><?php echo $data["S_Gender"]; ?></td>
                 <td><button class="button">Accept</button><button class="button">Reject</button></td>
             </tr>
-
+                <?php } ?>
         </tbody>
     </table>
 

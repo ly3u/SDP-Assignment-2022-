@@ -111,7 +111,7 @@
                 <div class="container">
 
                     <div class="col">
-                        <?php $sql="SELECT * FROM event WHERE E_ID = '$EID'";
+                        <?php $sql="SELECT e.*, c.* FROM event e, club c WHERE e.E_ID = '$EID' AND e.C_ID = c.C_ID";
         $result = mysqli_query($con, $sql);
         while ($data = mysqli_fetch_array($result)) { 
             ?>
@@ -135,10 +135,10 @@
                             </table><br>
                             <div class="left">
                                 <h6><?php echo $data["E_Description"]; ?></h6>
-                                <h6>🏫 Organizer: <?php echo $data["E_Name"]; ?></h6>
-                                <h6>📅 Date: <?php echo $data["E_Day"]; ?></h6>
-                                <h6>🕐 Time: <?php echo $data["E_Time"]; ?></h6>
-                                <h6>⌛ Duration: <?php echo $data["E_Duration"]; ?></h6>
+                                <h6>🏫 Organizer: &nbsp; <?php echo $data["C_Name"]; ?></h6>
+                                <h6>📅 Date: &nbsp;<?php echo $data["E_Day"]; ?></h6>
+                                <h6>🕐 Time: &nbsp;<?php echo $data["E_Time"]; ?></h6>
+                                <h6>⌛ Duration: &nbsp;<?php echo $data["E_Duration"]; ?></h6>
                             </div><br>
                         </div>
                     </div><br>
