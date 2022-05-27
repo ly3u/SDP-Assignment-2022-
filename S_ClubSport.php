@@ -28,8 +28,8 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        height:250px;
-        weight:250px;
+        height: 250px;
+        weight: 250px;
     }
 
     .center {
@@ -39,7 +39,7 @@
 </head>
 
 <body>
-<?php
+    <?php
         if(isset($email)){
             require_once ('nav_login.php');
         }else{
@@ -62,11 +62,12 @@
             <div class="col">
                 <div class="container">
                     <div class="row" style="margin-bottom: 10px;">
-                        
+
                         <div class="col"
                             style="border-style:solid; background-color:white; border-spacing: 15px; border-radius: 25px;">
                             <br><a href="S_ClubInfo.php?link=<?php echo $row['C_ID'] ?>"
-                                style="text-decoration: none; color:black;"><img id="img" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['C_Logo']); ?>"
+                                style="text-decoration: none; color:black;"><img id="img"
+                                    src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['C_Logo']); ?>"
                                     alt="music"><br>
                                 <h3 class="center"><?php echo $row["C_Name"]; ?></h3>
                             </a><br>
@@ -76,7 +77,7 @@
                                     <td><?php echo $row["P_Name"]; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Vice  President: </th>
+                                    <th>Vice President: </th>
                                     <td><?php echo $row["VP_Name"]; ?></td>
                                 </tr>
                                 <tr>
@@ -92,7 +93,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <?php }
         } ?>
         </div>
