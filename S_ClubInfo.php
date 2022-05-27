@@ -33,10 +33,56 @@
 
 <head>
     <title>Club Information </title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script>
+    function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Your Request To Join The Club Is Sended !  Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    }
+
+    function pop_up() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'You Are Already A Member of This Club !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    }
+    function pop_up_c() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'You Had Already Sended A Request To Join! Please Wait For Confirmation !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    }
+    </script>
 </head>
 
 <body>
-<?php
+    <?php
         if(isset($email)){
             require_once ('nav_login.php');
         }else{
@@ -49,7 +95,9 @@
                 <h1 class="display-5 fw-bold"><?php echo $row6['C_Name']; $CID=$row6['C_ID'];?></h1>
                 <p class="col-md-8 fs-4"><?php echo $row6['C_Description']; ?></p>
                 <br>
-                <button class="btn btn-primary btn-lg" type="button" name="join">Join Club</button>
+                <form method="POST">
+                    <button class="btn btn-primary btn-lg" name="join">Join Club</button>
+                </form>
             </div>
             <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row6['C_Logo']); ?>" alt=""
                 style="width:250px; height:250px; margin-top: 25px;">
@@ -114,7 +162,9 @@
                                 <h3 class="card-text fw-bold"><?php echo $row2['E_Name']; ?></h3>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="S_EventDetail.php?Eid=<?php echo $row2['E_ID'] ?>" style=" color:black;">Details</a></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                                                href="S_EventDetail.php?Eid=<?php echo $row2['E_ID'] ?>"
+                                                style=" color:black;">Details</a></button>
                                     </div>
                                 </div>
                             </div>
@@ -132,24 +182,28 @@
 <?php 
             if(isset($_POST['join'])) {
                 $sql10 = "SELECT * FROM club_member WHERE C_ID='$CID' AND TP='$tp'";
-                // $result1 = mysqli_query($con, $sql10);
-                // $X =mysqli_num_rows($result1);
-            //     if(isset($email)){
-                
-            //       if($X > 0){
-            //          /* Collect all inputted form data */
-            //             echo  "<script>pop_up()</script>";
-            //         }else{
+                $result10 = mysqli_query($con, $sql10);
+                $X =mysqli_num_rows($result10);
+                $sql11 = "SELECT * FROM p_club_member WHERE C_ID='$CID' AND TP='$tp'";
+                $result11 = mysqli_query($con, $sql11);
+                $y =mysqli_num_rows($result11);
+                if(isset($email)){
+                  if($X > 0){
+                     /* Collect all inputted form data */
+                        echo  "<script>pop_up()</script>";
+                    }else if($y > 0){
+                        echo  "<script>pop_up_c()</script>";
+                    }else{
                         
-            //             $tp = $row['TP'];
-            //             echo  "<script>pop_up_success()</script>";
-            //             $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`) VALUES ('$EID','$tp')";
-            //             $result2 = mysqli_query($con, $sql2);
-            //         }
-            //     }else{
-            //         $url= "login.php";
-            // header("Location:" .$url);
-            //     }
+                        $tp = $row['TP'];
+                        echo  "<script>pop_up_success()</script>";
+                        $sql2 ="INSERT INTO `p_club_member`(`C_ID`, `TP`) VALUES ('$CID','$tp')";
+                        $result2 = mysqli_query($con, $sql2);
+                    }
+                }else{
+                    $url= "login.php";
+                    header("Location:" .$url);
+                }
                 }
             
 
