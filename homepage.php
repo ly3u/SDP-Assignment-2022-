@@ -69,7 +69,7 @@
 }
 .copyright {
     font-size:13px;
-    color:#aaa;
+    color:black;
     width: 110px;
     }
 * {box-sizing:border-box}
@@ -201,10 +201,12 @@
 
         </div>
     </div>
+    <br><br>
+    <hr>
     <div class="footer-basic">
-            <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a href="contactus.php">Contact Us</a>
-            <p class="copyright" id="center">UniClub © 2021</p>
-        </div>
+        <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a href="contactus.php">Contact Us</a>
+    </div>
+    <center><p class="copyright">UniClub © 2022</p></center>
 
 
 

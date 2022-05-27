@@ -20,6 +20,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel=”stylesheet” href="profile.css" crossorigin=”anonymous”>
@@ -39,10 +41,42 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+    function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    }
+
+    function pop_up() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'You Had Already Joined This Event !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    }
+    </script>
 </head>
 
 <body>
-<?php
+    <?php
         if(isset($email)){
             require_once ('nav_login.php');
         }else{
@@ -58,7 +92,8 @@
                     <h4>----- Profile -----</h4>
                     <button class="button3"><a href="S_profile.php" style=" color:black;"><span>My
                                 Profile</span></a></button>
-                    <button class="button3"><a href="S_JoinedC.php"style=" color:black;"><span>Joined Club</span></a></button>
+                    <button class="button3"><a href="S_JoinedC.php" style=" color:black;"><span>Joined
+                                Club</span></a></button>
                     <button class="button2"><a href="S_JoinedE.php"><span>Joined
                                 Event</span></a></button>
                 </div>
@@ -67,7 +102,7 @@
                 <div class="p-3 py-5"><br><br><br><br>
                     <div class="row mt-2">
                         <div class="col-md-7">
-                            <h1 class="text-right">Joined Club</h1>
+                            <h1 class="text-right">Joined Event</h1>
                         </div>
                     </div>
                     <br><br><br>
@@ -80,24 +115,29 @@
                                 <th style="width: 120px;">Event Time</th>
                                 <th style="width: 120px;">Event Status</th>
                                 <th>Action</th>
-                    
+
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $sql="SELECT e.*, p.* FROM event e, event_participant p WHERE p.TP='$tp' AND e.E_ID = p.E_ID ";
+                            <?php $sql="SELECT e.*, p.* FROM event e, event_participant p WHERE p.TP='$tp' AND e.E_ID = p.E_ID ";
         $result = mysqli_query($con, $sql);
         while ($data = mysqli_fetch_array($result)) { 
+            
             ?>
                             <tr>
-                                <td><?php echo $data["E_ID"]; ?></td>
+                                <td><?php echo $data["E_ID"]; $EID = $data["E_ID"];?></td>
                                 <td><?php echo $data["E_Name"]; ?></td>
                                 <td><?php echo $data["E_Day"]; ?></td>
                                 <td><?php echo $data["E_Time"]; ?></td>
                                 <td><?php echo $data["E_Status"]; ?></td>
-                                <td><?php if($data["E_Status"]=='ongoing'){?>Leave<?php } ?>
-                                <?php if($data["E_Status"]=='Ended'){?>Feedback<?php } ?></td>
+                                <td>
+                                    <form action="" method="POST"><?php if($data["E_Status"]=='ongoing'){?><button
+                                            class="button" name="leave">Leave</button><?php } ?>
+                                        <?php if($data["E_Status"]=='Ended'){?><button class="button"
+                                            name="feedback">Feedback</button><?php } ?></form>
+                                </td>
                             </tr>
-                        <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -120,3 +160,16 @@
 </body>
 
 </html>
+
+<?php 
+
+
+
+            if(isset($_POST['leave'])) {
+                echo  "<script>pop_up_success()</script>";
+                $sql1 = "DELETE FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
+                $result1 = mysqli_query($con, $sql1);
+                }
+            
+
+        ?>

@@ -13,6 +13,7 @@
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_assoc($result);
     $name=$row['Name'];
+    $tp = $row['TP'];
 
     $EID = $_GET['Eid']; 
   
@@ -58,35 +59,36 @@
     }
     </style>
     <script>
-        function pop_up_success(){
-                Swal.fire({
-                    icon:'success',
-                    title: 'Success', 
-                    text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
-                    showDenyButton: false,
-                    showCancelButton: true,
-                    confirmButtonText: '<a href="" style="text-decoration:none; color:white; ">Continue</a>',
-                    showClass: {
-                        popup: 'animate_animated animate_fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate_animated animate_fadeOutUp'
-                    }
-                })
+    function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="S_Event.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
             }
-            function pop_up(){
-                Swal.fire({
-                    icon:'error',
-                    title: 'Oops',
-                    text: 'You Had Already Joined This Event !',
-                    showClass: {
-                        popup: 'animate_animated animate_fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate_animated animate_fadeOutUp'
-                    }
-                })
+        })
+    }
+
+    function pop_up() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'You Had Already Joined This Event !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
             }
+        })
+    }
     </script>
 </head>
 
@@ -125,7 +127,10 @@
                                         <h3 class="left"><?php echo $data["E_Name"]; ?></h3>
                                     </th>
                                     <th></th>
-                                    <td class="right"><form method="POST"><button class="button" name="join">&nbsp; Join &nbsp; </button></form></td>
+                                    <td class="right">
+                                        <form method="POST"><button class="button" name="join">&nbsp; Join &nbsp;
+                                            </button></form>
+                                    </td>
                                 </tr>
                             </table><br>
                             <div class="left">
@@ -152,16 +157,23 @@
             if(isset($_POST['join'])) {
                 $sql1 = "SELECT * FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
                 $result1 = mysqli_query($con, $sql1);
-                if(!$result1->num_rows > 0){
-                    /* Collect all inputted form data */
-                    $tp = $row['TP'];
-                    echo  "<script>pop_up_success()</script>";
-                    $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`) VALUES ('$EID','$tp')";
-                    $result2 = mysqli_query($con, $sql2);
+                $X =mysqli_num_rows($result1);
+                if(isset($email)){
+                
+                  if($X > 0){
+                     /* Collect all inputted form data */
+                        echo  "<script>pop_up()</script>";
+                    }else{
+                        
+                        $tp = $row['TP'];
+                        echo  "<script>pop_up_success()</script>";
+                        $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`) VALUES ('$EID','$tp')";
+                        $result2 = mysqli_query($con, $sql2);
+                    }
                 }else{
-                    echo  "<script>pop_up()</script>";
+                    $url= "login.php";
+            header("Location:" .$url);
                 }
-            
                 }
             
 
