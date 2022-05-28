@@ -46,14 +46,14 @@
                     </li>
                     <h5>
                         <li class="nav-item dropdown">
-                        <a class="nav-link" href="S_Event.php">Member</a>
+                        <a class="nav-link" href="CMT_Member.php">Member</a>
                         </li>
                     </h5>
                     <li class="nav-item">
-                        <h5> <a class="nav-link" href="S_Event.php">Event</a></h5>
+                        <h5> <a class="nav-link" href="CMT_Event.php">Event</a></h5>
                     </li>
                     <li class="nav-item">
-                        <h5> <a class="nav-link" href="ContactUs.php">Contact Us</a></h5>
+                        <h5> <a class="nav-link" href="CMT_ContactUs.php">Contact Us</a></h5>
                     </li>
                 </ul>
 
