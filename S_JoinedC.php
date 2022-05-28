@@ -20,6 +20,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel=”stylesheet” href="profile.css" crossorigin=”anonymous”>
@@ -39,6 +42,24 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+         function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Leave This Club ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="S_JoinedC.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+    </script>
 </head>
 
 <body>
@@ -87,9 +108,10 @@
         while ($data = mysqli_fetch_array($result)) { 
             ?>
                             <tr>
-                                <td><?php echo $data["C_ID"]; ?></td>
+                                <td><input type="hidden" name="cid" 
+                                            value="<?php echo $data['C_ID'];?>"><?php echo $data["C_ID"]; ?></td>
                                 <td><?php echo $data["C_Name"]; ?></td>
-                                <th>Leave</th>
+                                <th><button name = "leave" class="button">Leave</button></th>
                             </tr>
                             <?php }?>
                         </tbody>
@@ -115,3 +137,14 @@
 </body>
 
 </html>
+
+<?php 
+    if(isset($_POST['leave'])) {
+        $CID=$_POST['cid'];
+        echo  "<script>pop_up_success()</script>";
+        $sql1 = "DELETE FROM club_member WHERE C_ID='$CID' AND TP='$tp'";
+        $result1 = mysqli_query($con, $sql1);
+        }
+
+
+?>
