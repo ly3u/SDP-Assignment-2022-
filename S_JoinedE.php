@@ -46,10 +46,10 @@
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
+            text: 'Are Your Sure To Leave This Event ! If Yes Please Click On Continue',
             showDenyButton: false,
             showCancelButton: true,
-            confirmButtonText: '<a href="" style="text-decoration:none; color:white; ">Continue</a>',
+            confirmButtonText: '<a href="S_JoinedE.php" style="text-decoration:none; color:white; ">Continue</a>',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -142,18 +142,19 @@
         while ($data = mysqli_fetch_array($result)) { 
             
             ?>
-                            <tr>
-                                <td><?php echo $data["E_ID"]; $EID = $data["E_ID"];?></td>
+                            <tr><form action="" method="POST">
+                                <td ><input type="hidden" name ="eid" value="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"];?></td>
                                 <td><?php echo $data["E_Name"]; ?></td>
                                 <td><?php echo $data["E_Day"]; ?></td>
                                 <td><?php echo $data["E_Time"]; ?></td>
                                 <td><?php echo $data["E_Status"]; ?></td>
                                 <td>
-                                    <form action="" method="POST"><?php if($data["E_Status"]=='ongoing'){?><button
-                                            class="button" name="leave">Leave</button><?php } ?>
+                                    <?php if($data["E_Status"]=='ongoing'){?><button
+                                            class="button" name="leave" >Leave</button><?php } ?>
                                         <?php if($data["E_Status"]=='Ended'){?><button class="button"
-                                            name="feedback">Feedback</button><?php } ?></form>
+                                            name="feedback" >Feedback</button><?php } ?>
                                 </td>
+                                </form>
                             </tr>
                             <?php } ?>
                         </tbody>
@@ -184,6 +185,8 @@
 
 
             if(isset($_POST['leave'])) {
+                $EID=$_POST['eid'];
+           
                 echo  "<script>pop_up_success()</script>";
                 $sql1 = "DELETE FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
                 $result1 = mysqli_query($con, $sql1);
