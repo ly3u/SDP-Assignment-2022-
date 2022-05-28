@@ -46,6 +46,10 @@
     }
     </style>
     <script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
     function pop_up_success() {
         Swal.fire({
             icon: 'success',
@@ -165,7 +169,7 @@
     </div>
     </div>
     <div class="form-popup" id="myForm">
-        <form method="post" class="form-container">
+        <form action="" method="post" class="form-container">
             <h1>Feedback</h1>
             <textarea type="text" placeholder="Enter Feedback" rows="4" name="feedbackText" required></textarea>
 
@@ -189,13 +193,12 @@
         $result1 = mysqli_query($con, $sql1);
         }
 
-    if(isset($_POST['submit'])) {        
+    if(isset($_POST['feedbackText'])) {        
         $EID=$_POST['eid'];
         $review = $_POST['feedbackText'];
         $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('E0004', '$tp', '$review')";
         // $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '$tp', '$review')";
-        $feedbackResult = mysqli_query($con, $feedbackSQL);
-        unset($_POST['submit']);
+        $feedbackResult = mysqli_query($con, $feedbackSQL);        
         }
 ?>
 <script>
