@@ -3,13 +3,15 @@
     include 'config.php';
     error_reporting(0);
     ob_start(); 
-    $email=$_SESSION['email'];
-
-    $sql="SELECT * FROM student_acc WHERE S_Email='$email'";
-    $result=mysqli_query($con, $sql);
-    $row=mysqli_fetch_assoc($result);
-    $name=$row['Name'];
-    $tp=$row['TP'];
+    
+    if (isset($_SESSION['email'])){
+        $email=$_SESSION['email'];
+        $sql="SELECT * FROM student_acc WHERE S_Email='$email'";
+        $result=mysqli_query($con, $sql);
+        $row=mysqli_fetch_assoc($result);
+        $name=$row['S_Name'];
+        $tp=$row['TP'];
+    }
 
 ?>
 <!DOCTYPE html>
@@ -21,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -74,19 +77,22 @@
     };
 
     function feedbackPopUp() {
+        var form =
+            '<form action="" method="post" id="feedback">' +
+            '<textarea class="form-control" name="feedbackText" id="feedbackText" cols="30" rows="8" required>' +
+            '</textarea></form>';
         Swal.fire({
             title: 'Enter Your Feedback:',
-            input: 'textarea',
-            inputPlaceholder: 'Type your feedback here...',
+            html: form,
             showCancelButton: true,
-            inputValidator: (value) => {
-                return new Promise((resolve) => {
-                    if (value) {
-                        resolve()
-                    } else {
-                        resolve('You need to enter something!')
-                    }
-                })
+            preConfirm: () => {
+                let Feedback = Swal.getPopup().querySelector('#feedbackText').value
+                if (Feedback === '') {
+                    Swal.showValidationMessage('Please Enter Your Feedback.')
+                }
+            },
+            onClose: () => {
+                document.getElementById("feedback").submit()
             }
         })
     };
@@ -139,20 +145,22 @@
                         <tbody>
                             <?php $sql="SELECT e.*, p.* FROM event e, event_participant p WHERE p.TP='$tp' AND e.E_ID = p.E_ID ";
         $result = mysqli_query($con, $sql);
-        while ($data = mysqli_fetch_array($result)) { 
-            
+        while ($data = mysqli_fetch_array($result)) {             
             ?>
-                            <tr><form action="" method="POST">
-                                <td ><input type="hidden" name ="eid" value="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"];?></td>
-                                <td><?php echo $data["E_Name"]; ?></td>
-                                <td><?php echo $data["E_Day"]; ?></td>
-                                <td><?php echo $data["E_Time"]; ?></td>
-                                <td><?php echo $data["E_Status"]; ?></td>
-                                <td>
-                                    <?php if($data["E_Status"]=='ongoing'){?><button
-                                            class="button" name="leave" >Leave</button><?php } ?>
-                                        <?php if($data["E_Status"]=='Ended'){?><button class="button"
-                                            name="feedback" >Feedback</button><?php } ?>
+                            <tr>
+                                <form action="" method="POST">
+                                    <td><input type="hidden" name="eid"
+                                            value="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"];?></td>
+                                    <td><?php echo $data["E_Name"]; ?></td>
+                                    <td><?php echo $data["E_Day"]; ?></td>
+                                    <td><?php echo $data["E_Time"]; ?></td>
+                                    <td><?php echo $data["E_Status"]; ?></td>
+                                    <td><?php if($data["E_Status"]=='ongoing'){?><button class="button"
+                                            name="leave">Leave</button><?php } ?>
+                                        <?php if($data["E_Status"]=='Ended'){?><button class="button" name="feedback"
+                                            id="feedback"
+                                            onclick="feedbackPopUp(); event.preventDefault();">Feedback</button><?php } ?>
+                                </form>
                                 </td>
                                 </form>
                             </tr>
@@ -166,14 +174,8 @@
     </div>
     </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 </body>
 </body>
@@ -181,20 +183,19 @@
 </html>
 
 <?php 
+    if(isset($_POST['leave'])) {
+        $EID=$_POST['eid'];
+        echo  "<script>pop_up_success()</script>";
+        $sql1 = "DELETE FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
+        $result1 = mysqli_query($con, $sql1);
+        };
 
-
-
-            if(isset($_POST['leave'])) {
-                $EID=$_POST['eid'];
-           
-                echo  "<script>pop_up_success()</script>";
-                $sql1 = "DELETE FROM event_participant WHERE E_ID='$EID' AND TP='$tp'";
-                $result1 = mysqli_query($con, $sql1);
-                }
-
-            if(isset($_POST['feedback'])) {
-                echo  "<script>feedbackPopUp()</script>";               
-                }
-            
-
-        ?>
+    if(isset($_POST['feedback'])) {
+        $EID=$_POST['eid'];
+        $review = $_POST['feedbackText'];
+        $feedbackSQL =
+        "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '999', '$review')";
+        $feedbackResult = mysqli_query($con, $feedbackSQL);
+        };
+?>
+<script>
