@@ -62,12 +62,28 @@
             }
         })
     };
+    function pop_up_success_c() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Review This Event ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="S_JoinedE.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
 
     function pop_up() {
         Swal.fire({
             icon: 'error',
             title: 'Oops',
-            text: 'You Had Already Joined This Event !',
+            text: 'You Had Already Gives Feedback To This Event !',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -78,11 +94,15 @@
     };
 
     function openForm() {
-        document.getElementById("myForm").style.display = "block";
+        var EID = document.getElementById("Eid").value;
+        <?php $ID = "<script>document.write(EID)
+    </script>"?>
+    document.getElementById("myText").value = EID;
+    document.getElementById("myForm").style.display = "block";
     }
 
     function closeForm() {
-        document.getElementById("myForm").style.display = "none";
+    document.getElementById("myForm").style.display = "none";
     }
     </script>
 </head>
@@ -137,7 +157,7 @@
             ?>
                             <tr>
                                 <form action="" method="POST">
-                                    <td><input type="hidden" name="eid"
+                                    <td><input type="hidden" name="eid" id="Eid"
                                             value="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"];?>
                                     </td>
                                     <td><?php echo $data["E_Name"]; ?></td>
@@ -148,7 +168,7 @@
                                             type="submit">Leave</button><?php } ?>
                                         <?php if($data["E_Status"]=='Ended'){?><button class="button" name="feedback"
                                             type="submit"
-                                            onclick="openForm(); event.preventDefault();">Feedback</button><?php } ?>
+                                            onclick="openForm(); event.preventDefault(); ">Feedback</button><?php } ?>
                                 </form>
                                 </td>
                                 </form>
@@ -167,6 +187,7 @@
     <div class="form-popup" id="myForm">
         <form method="post" class="form-container">
             <h1>Feedback</h1>
+            <input type="hidden" id='myText' name='id'>
             <textarea type="text" placeholder="Enter Feedback" rows="4" name="feedbackText" required></textarea>
 
             <button type="submit" class="btn" name="submit">Confirm</button>
@@ -189,13 +210,21 @@
         $result1 = mysqli_query($con, $sql1);
         }
 
-    if(isset($_POST['submit'])) {        
-        $EID=$_POST['eid'];
+    if(isset($_POST['submit'])) {   
+        $EID=$_POST['id'];
         $review = $_POST['feedbackText'];
-        $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('E0004', '$tp', '$review')";
-        // $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '$tp', '$review')";
+
+        $sql11 = "SELECT * FROM event_feedback WHERE E_ID='$EID' AND TP='$tp'";
+        $result11 = mysqli_query($con, $sql11);
+        $X =mysqli_num_rows($result11);
+        if($X > 0){
+            echo  "<script>pop_up()</script>";
+        }else{
+            echo  "<script>pop_up_success_c()</script>";
+        $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '$tp', '$review')";
         $feedbackResult = mysqli_query($con, $feedbackSQL);
         unset($_POST['submit']);
+        }
         }
 ?>
 <script>
