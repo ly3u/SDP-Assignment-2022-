@@ -55,28 +55,28 @@
 
 <body>
     <div class="container my-5">
-    <table style="width:90%; margin:auto;">
-        <tr>
-            <th style="width:50px;"></th>
-            <th style="width:650px;">
-                <h1 style="text-align:center">Ongoing Event</h1>
-            </th>
-            <th style="width:40px;">
-                <div class="wrapper">
-                    <div class="link_wrapper">
-                        <a href="CMT_AddEvent.php" class="a">Add Event</a>
-                        <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
-                                <path
-                                    d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
-                            </svg>
+        <table style="width:90%; margin:auto;">
+            <tr>
+                <th style="width:50px;"></th>
+                <th style="width:650px;">
+                    <h1 style="text-align:center">Ongoing Event</h1>
+                </th>
+                <th style="width:40px;">
+                    <div class="wrapper">
+                        <div class="link_wrapper">
+                            <a href="CMT_AddEvent.php" class="a">Add Event</a>
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+                                    <path
+                                        d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
+                                </svg>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-            </th>
-        </tr>
-    </table>
+                    </div>
+                </th>
+            </tr>
+        </table>
     </div>
     <hr>
     <div class="container">
@@ -85,7 +85,7 @@
                 <div class="container">
 
                     <div class="col">
-                    <?php $sql1="SELECT c.*, e.* FROM event e, club c WHERE e.C_ID = '$c_id' AND e.E_Status ='ongoing' AND e.C_ID=c.C_ID   ";
+                        <?php $sql1="SELECT c.*, e.* FROM event e, club c WHERE e.C_ID = '$c_id' AND e.E_Status ='ongoing' AND e.C_ID=c.C_ID   ";
         $result1 = mysqli_query($con, $sql1);
         while ($data = mysqli_fetch_array($result1)) { 
             ?>
@@ -102,9 +102,12 @@
                                     </th>
                                     <th></th>
                                     <td style="float:right; padding-left:200px;">
-                                        <form method="POST"><button class="button" name="join">&nbsp; Submit Report &nbsp;
-                                            </button><button class="button" name="join"><a href="CMT_EventEdit.php?Eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">&nbsp; Edit &nbsp;
-        </a></button></form>
+                                        <form method="POST"><button class="button" name="join">&nbsp; Submit Report
+                                                &nbsp;
+                                            </button><button class="button" name="join"><a
+                                                    href="CMT_EventEdit.php?Eid=<?php echo $data['E_ID'] ?>"
+                                                    style="text-decoration: none; color:black;">&nbsp; Edit &nbsp;
+                                                </a></button></form>
                                     </td>
                                 </tr>
                             </table><br>
@@ -119,7 +122,7 @@
                     </div><br>
                     <?php } ?>
                 </div>
-   
+
             </div>
         </div>
 
@@ -132,7 +135,8 @@
                 </center>
             </div>
         </div>
-    </div><hr>
+    </div>
+    <hr>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -156,8 +160,11 @@
                                     </th>
                                     <th></th>
                                     <td class="right">
-                                        <form method="POST"><button class="button" name="join">&nbsp; View Feedback &nbsp;
-                                            </button></form>
+                                        <form method="POST"><button class="button" name="join"><a
+                                                    href="CMT_EventFeedback.php?Eid=<?php echo $data['E_ID'] ?>"
+                                                    style="text-decoration: none; color:black;">&nbsp; View Feedback
+                                                    &nbsp;
+                                                </a></button></form>
                                     </td>
                                 </tr>
                             </table><br>
