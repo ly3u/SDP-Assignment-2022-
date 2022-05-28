@@ -64,7 +64,7 @@
             <th style="width:40px;">
                 <div class="wrapper">
                     <div class="link_wrapper">
-                        <a href="#" class="a">Add Event</a>
+                        <a href="CMT_AddEvent.php" class="a">Add Event</a>
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
                                 <path
@@ -92,7 +92,7 @@
                         <div
                             style="border-style:solid white; background-color:white; border-spacing: 15px; border-radius: 25px;">
                             <img id="img"
-                                src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($data['E_Banner']); ?>"
+                                src="data:image/jpg;charset=utf8;base64,<?php  echo base64_encode($data['E_Banner']); ?>"
                                 alt="music" style="height:400px; width:1068px; border-radius: 25px 25px 0px 0px;"><br>
 
                             <table>

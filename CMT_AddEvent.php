@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'config.php';
-    error_reporting(0);
+    // error_reporting(0);
     ob_start(); 
     $cid=$_SESSION['club'];
 
@@ -58,7 +58,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
+            text: 'Your Event Proposal is Sended Please Wait For Confirmation !  Please Click On Continue',
             showDenyButton: false,
             showCancelButton: true,
             confirmButtonText: '<a href="CMT_Event.php" style="text-decoration:none; color:white; ">Continue</a>',
@@ -103,7 +103,7 @@
             <div class="col-8">
                 <h4>Proposal Submission</h4>
                 <form style="border-style:solid; border-spacing: 15px; border-radius: 25px; background-color:white;"
-                    method='POST' class="bg1">
+                    method='POST' class="bg1" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                 
+
                                 </div>
                             </div>
                             <div class="container">
@@ -146,8 +146,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Event Description</label>
-                                            <textarea class="form-control"
-                                                placeholder="" name="address" required
+                                            <textarea class="form-control" placeholder="" name="description" required
                                                 rows="3"></textarea>
                                         </div>
                                     </div>
@@ -169,34 +168,49 @@
                                     </div>
                                 </div>
                             </div>
-                       
-                                <div class="form-group" align="right">
-                                    <button name="submit" class="button">Submit</button>
-                                </div><br>
-                            </div>
+
+                            <div class="form-group" align="right">
+                                <button name="submit" class="button">Submit</button>
+                            </div><br>
                         </div>
-                    </div><br>
-
-            </div>
-
-            </form>
+                    </div>
+            </div><br>
 
         </div>
+
+        </form>
+
+    </div>
     </div>
 </body>
 
 </html>
 
 <?php 
-            if(isset($_POST['save'])) {
+            if(isset($_POST['submit'])) {
                 $ename = $_POST['ename'];
-                $cname = $_POST['cname'];
+                $banner = addslashes(file_get_contents($_FILES['banner']['tmp_name']));
                 $description = $_POST['description'];
                 $day = $_POST['day'];
                 $time = $_POST['time'];
                 $duration = $_POST['duration'];
-                $query2 = "UPDATE `event` SET `E_Name`='$ename',`E_Day`='$day',`E_Time`='$time',`E_Duration`='$duration',`E_Description`='$description' WHERE E_ID='$EID'";
-                $result = mysqli_query($con, $query2);
+                // $proposal = addslashes(file_get_contents($_FILES['proposal']['tmp_name']));
+                $pdf=$_FILES['proposal']['name'];
+          $pdf_type=$_FILES['proposal']['type'];
+          $pdf_size=$_FILES['proposal']['size'];
+          $pdf_tem_loc=$_FILES['proposal']['tmp_name'];
+          $pdf_store="pdf/".$pdf;
+
+        //   move_uploaded_file($pdf_tem_loc,$pdf_store);
+
+
+                $sql11 = "SELECT * FROM event";
+                $result11 = mysqli_query($con, $sql11);
+                $X =mysqli_num_rows($result11);
+                $id= 'E'.sprintf("%'04d", $X+1);
+                $query2 = "INSERT INTO `event`(`E_ID`, `E_Name`, `C_ID`, `E_Banner`, `E_Day`, `E_Time`, `E_Duration`, `E_Status`, `E_Description`, `E_Proposal`) VALUES
+                 ('$id','$ename','$c_id','$banner','$day','$time','$duration','Pending','$description','$pdf')";
+                $result2 = mysqli_query($con, $query2);
                 echo "<script>pop_up_success()</script>";
                 }
             
