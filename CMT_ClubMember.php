@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>  
     <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="b.css">
     <style>
@@ -41,6 +42,38 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+        function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Remove This Member ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="CMT_ClubMember.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+
+    function pop_up() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'You Had Already Joined This Event !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+    </script>
 </head>
 
 <body>
@@ -86,17 +119,33 @@
             while ($data = mysqli_fetch_array($result1)) { 
             ?>
             <tr>
-                <td><?php echo $data["TP"]; ?></td>
+                <form action="" method="POST">
+                <td><input type="hidden" name="tp" value="<?php echo $data['TP'];?>"><?php echo $data["TP"]; ?></td>
                 <td><?php echo $data["S_Name"]; ?></td>
                 <td><?php echo $data["Intake"]; ?></td>
                 <td><?php echo $data["S_Email"]; ?></td>
                 <td><?php echo $data["S_Gender"]; ?></td>
-                <td><button class="button">Remove</button></td>
+                <td><button class="button" name="remove">Remove</button></td>
+            </form>
             </tr>
                 <?php }?>
         </tbody>
     </table>
 
 </body>
-
 </html>
+
+<?php 
+
+
+
+            if(isset($_POST['remove'])) {
+                $TP=$_POST['tp'];
+                echo  "<script>pop_up_success()</script>";
+                $sql1 = "DELETE FROM club_member WHERE C_ID='$c_id' AND TP='$TP'";
+                $result1 = mysqli_query($con, $sql1);
+                }
+
+            
+
+        ?>

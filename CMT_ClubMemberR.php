@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'config.php';
-    error_reporting(0);
+    // error_reporting(0);
     ob_start(); 
     $cid=$_SESSION['club'];
 
@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="table.css">
@@ -43,6 +44,41 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+    function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Accept This Request ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="CMT_ClubMemberR.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+
+    function pop_up_success_1() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Are Your Sure To Reject This Request ! If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="CMT_ClubMemberR.phpp" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+    </script>
 </head>
 
 <body>
@@ -83,22 +119,45 @@
             </tr>
         </thead>
         <tbody>
-        <?php $sql1="SELECT a.*, c.* FROM p_club_member c, student_acc a WHERE c.C_ID = '$c_id' AND c.TP = a.TP ";
+            <?php $sql1="SELECT a.*, c.* FROM p_club_member c, student_acc a WHERE c.C_ID = '$c_id' AND c.TP = a.TP ";
               $result1 = mysqli_query($con, $sql1);
             while ($data = mysqli_fetch_array($result1)) { 
             ?>
             <tr>
-                <td><?php echo $data["TP"]; ?></td>
-                <td><?php echo $data["S_Name"]; ?></td>
-                <td><?php echo $data["Intake"]; ?></td>
-                <td><?php echo $data["S_Email"]; ?></td>
-                <td><?php echo $data["S_Gender"]; ?></td>
-                <td><button class="button">Accept</button><button class="button">Reject</button></td>
+                <form action="" method="POST">
+                    <td><input type="hidden" name="tp" value="<?php echo $data['TP'];?>"><?php echo $data["TP"]; ?></td>
+                    <td><?php echo $data["S_Name"]; ?></td>
+                    <td><?php echo $data["Intake"]; ?></td>
+                    <td><?php echo $data["S_Email"]; ?></td>
+                    <td><?php echo $data["S_Gender"]; ?></td>
+                    <td><button class="button" name="accept">Accept</button><button class="button"
+                            name="reject">Reject</button></td>
+                </form>
             </tr>
-                <?php } ?>
+            <?php } ?>
         </tbody>
     </table>
 
 </body>
 
 </html>
+
+<?php 
+
+
+if(isset($_POST['accept'])) {
+    $TP=$_POST['tp'];
+    echo  "<script>pop_up_success()</script>";
+    $sql1 = "DELETE FROM p_club_member WHERE C_ID='$c_id' AND TP='$TP'";
+    $result1 = mysqli_query($con, $sql1);
+    $sql2 = "INSERT INTO `club_member`(`No`, `C_ID`, `TP`) VALUES ('','$c_id','$TP')";
+    $result2 = mysqli_query($con, $sql2);
+    }
+
+    if(isset($_POST['reject'])) {
+        $TP=$_POST['tp'];
+        echo  "<script>pop_up_success_1()</script>";
+        $sql1 = "DELETE FROM p_club_member WHERE C_ID='$c_id' AND TP='$TP'";
+        $result1 = mysqli_query($con, $sql1);
+        }
+        ?>

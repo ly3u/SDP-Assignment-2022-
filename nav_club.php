@@ -46,7 +46,7 @@
                     </li>
                     <h5>
                         <li class="nav-item dropdown">
-                        <a class="nav-link" href="CMT_Member.php">Member</a>
+                        <a class="nav-link" href="CMT_ClubMember.php">Member</a>
                         </li>
                     </h5>
                     <li class="nav-item">
