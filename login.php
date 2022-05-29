@@ -81,7 +81,7 @@
             exit;
         } else if (mysqli_num_rows($result2)==1) {
             $_SESSION['admin']= $email; 
-            $url= "A_Help.php";
+            $url= "A_Homepage.php";
             header("Location:" .$url);
             exit;
             exit;
