@@ -58,24 +58,10 @@
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Are Your Sure To Join This Event ! If Yes Please Click On Continue',
+            text: 'Event Information Saved Sucessfully!',
             showDenyButton: false,
-            showCancelButton: true,
+            showCancelButton: false,
             confirmButtonText: '<a href="CMT_Event.php" style="text-decoration:none; color:white; ">Continue</a>',
-            showClass: {
-                popup: 'animate_animated animate_fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate_animated animate_fadeOutUp'
-            }
-        })
-    }
-
-    function pop_up() {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops',
-            text: 'You Had Already Joined This Event !',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },

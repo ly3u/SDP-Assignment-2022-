@@ -54,9 +54,9 @@
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Are Your Sure To Leave This Event ! If Yes Please Click On Continue',
+            text: 'You Have Leave The Event Successfully!',
             showDenyButton: false,
-            showCancelButton: true,
+            showCancelButton: false,
             confirmButtonText: '<a href="S_JoinedE.php" style="text-decoration:none; color:white; ">Continue</a>',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
@@ -66,13 +66,14 @@
             }
         })
     };
+
     function pop_up_success_c() {
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Are Your Sure To Review This Event ! If Yes Please Click On Continue',
+            text: 'Feedback Given Successfully!',
             showDenyButton: false,
-            showCancelButton: true,
+            showCancelButton: false,
             confirmButtonText: '<a href="S_JoinedE.php" style="text-decoration:none; color:white; ">Continue</a>',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
@@ -227,7 +228,6 @@
             echo  "<script>pop_up_success_c()</script>";
         $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '$tp', '$review')";
         $feedbackResult = mysqli_query($con, $feedbackSQL);
-        unset($_POST['submit']);
         }
         }
 ?>
