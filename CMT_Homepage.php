@@ -27,36 +27,12 @@
 
 ?>
 
-<style>
-.swal-wide {
-    width: 1000px !important;
-}
-</style>
-
 <head>
     <title>Club Information </title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <script>
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
-    }
-
-    function pop_up_success() {
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Updated Successfully!',
-            className: 'swal-wide',
-            showDenyButton: false,
-            showCancelButton: false,
-            confirmButtonText: '<a href="" style="text-decoration:none; color:white; ">Confirm</a>',
-            showClass: {
-                popup: 'animate_animated animate_fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate_animated animate_fadeOutUp'
-            }
-        })
     }
     </script>
 </head>
@@ -88,14 +64,17 @@
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" style=" border-radius: 25px;">
                         <div class="carousel-item active">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="425"
-                                role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <rect width="100%" height="100%" fill="#1982c4" />
-                                <text class="display-2 fw-bold" x="22.5%" y="50%" dy=".3em">
-                                    Edit Annoucement</text>
-                            </svg>
-                        </div>
+                            <a href="google.com">
+                                <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800"
+                                    height="425" role="img" aria-label="Placeholder: First slide"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <rect width="100%" height="100%" fill="#1982c4" />
+                                    <text class="display-2 fw-bold" x="22.5%" y="50%" dy=".3em"
+                                        style="text-decoration: none;">Edit
+                                        Annoucement
+                                    </text>
+                                </svg>
+                        </div></a>
                         <?php
                         while ($row1 = mysqli_fetch_array($result1)) { ?>
                         <div class="carousel-item">
@@ -108,11 +87,9 @@
                                 <text class="display-6" x="15%" y="35%" fill="#111"
                                     dy=".3em"><?php echo $row1["Announcement"] ?>
                                 </text>
-                                <a href=" CMT_EventEdit.php?Eid=<?php echo $row2['E_ID'] ?>"
-                                    style=" color:black;"><button type="button"
-                                        class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <a href=" CMT_EventEdit.php?Eid=<?php echo $row2['E_ID'] ?>" style=" color:black;"><text
+                                        type="button" class="btn btn-sm btn-outline-secondary"></text>
                                 </a>
-
                             </svg>
                         </div>
                         <?php } ?>
@@ -130,37 +107,16 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <div class="album py-5 " style="background-color: #fffaff ; border-radius: 25px; min-height:600px;">
-            <div class="container">
-                <center>
-                    <h1 class="display-5 fw-bold">Events</h1>
-                </center>
-                <br>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <?php while ($row2 = mysqli_fetch_array($result2)) { ?>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img id="img" height="225"
-                                src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row2['E_Banner']); ?>"
-                                alt="banner">
-                            <div class="card-body" style="height:150px;">
-                                <h3 class="card-text fw-bold"><?php echo $row2['E_Name']; ?></h3>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group" style="position: absolute; bottom: 2%;">
-                                        <a href=" CMT_EventEdit.php?Eid=<?php echo $row2['E_ID'] ?>"
-                                            style=" color:black;"><button type="button"
-                                                class="btn btn-sm btn-outline-secondary">Edit</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php }?>
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="form-popup" id="myForm">
+        <form action="" method="post" class="form-container">
+            <h1>Feedback</h1>
+            <input type="hidden" id='myText' name='id'>
+            <textarea type="text" placeholder="Enter Feedback" rows="4" name="feedbackText" required></textarea>
+
+            <button type="submit" class="btn" name="submit">Confirm</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
     </div>
 </body>
 
