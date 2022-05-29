@@ -83,19 +83,46 @@
             <th style="width:650px;">
                 <h1 style="text-align:center">Pending Events</h1>
             </th>
-            <th style="width:50px;">
-                <div class="wrapper">
-                    <div class="link_wrapper">
-                        <a href="A_AddClub.php" class="a">Add New</a>
-                        <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
-                                <path
-                                    d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
-                            </svg>
-                        </div>
-                    </div>
-
-                </div>
+        </tr>
+    </table>
+    <br>
+    <table style="width:90%; margin:auto;" class="styled-table">
+        <thead>
+            <tr>
+            <th>Event ID</th>
+                <th>Event Name</th>
+                <th>Organizer</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $sql1="SELECT e.*, c.* FROM event e, club c WHERE e.E_Status ='Pending' AND e.C_ID = c.C_ID ";
+              $result1 = mysqli_query($con, $sql1);
+            while ($data = mysqli_fetch_array($result1)) { 
+            ?>
+            <tr>
+                <form action="" method="POST">
+                    <td><input type="hidden" name = "eid" value ="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"]; ?></td>
+                <td><?php echo $data["E_Name"]; ?></td>
+                <td><?php echo $data["C_Name"]; ?></td>
+                <td><?php echo $data["E_Day"]; ?></td>
+                <td><?php echo $data["E_Time"]; ?></td>
+                <td><?php echo $data["E_Duration"]; ?></td>
+                <td><button class="button" name="edit"><a href="A_EventP.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">View</a></button>
+            </form>
+            </tr>
+                <?php }?>
+        </tbody>
+    </table>
+    <br><br>
+    <table style="width:80%; margin:auto;">
+    <tr>
+            <th style="width:50px;"></th>
+            <th style="width:650px;">
+                <h1 style="text-align:center">Ongoing Events</h1>
             </th>
         </tr>
     </table>
@@ -103,31 +130,71 @@
     <table style="width:90%; margin:auto;" class="styled-table">
         <thead>
             <tr>
-            <th>Club ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Categories</th>
-                <th>Advicer</th>
-                <th>President</th>
+            <th>Event ID</th>
+                <th>Event Name</th>
+                <th>Organizer</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php $sql1="SELECT * FROM club ";
+            <?php $sql1="SELECT e.*, c.* FROM event e, club c WHERE e.E_Status ='ongoing' AND e.C_ID = c.C_ID ";
               $result1 = mysqli_query($con, $sql1);
             while ($data = mysqli_fetch_array($result1)) { 
             ?>
             <tr>
                 <form action="" method="POST">
-                    <td><input type="hidden" name = "tp" value ="<?php echo $data['C_ID'];?>"><?php echo $data["C_ID"]; ?></td>
+                    <td><input type="hidden" name = "eid" value ="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"]; ?></td>
+                <td><?php echo $data["E_Name"]; ?></td>
                 <td><?php echo $data["C_Name"]; ?></td>
-                <td><?php echo $data["C_Email"]; ?></td>
-                <td><?php echo $data["C_Password"]; ?></td>
-                <td><?php echo $data["Categories"]; ?></td>
-                <td><?php echo $data["C_Advicer"]; ?></td>
-                <td><?php echo $data["P_Name"]; ?></td>
-                <td><button class="button" name="edit"><a href="A_StudentEdit.php?tp=<?php echo $data['C_ID'] ?>" style="text-decoration: none; color:black;">View</a></button>
+                <td><?php echo $data["E_Day"]; ?></td>
+                <td><?php echo $data["E_Time"]; ?></td>
+                <td><?php echo $data["E_Duration"]; ?></td>
+                <td><button class="button" name="edit"><a href="A_EventO.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">Detail</a></button>
+            </form>
+            </tr>
+                <?php }?>
+        </tbody>
+    </table>
+    <br><br>
+    <table style="width:80%; margin:auto;">
+    <tr>
+            <th style="width:50px;"></th>
+            <th style="width:650px;">
+                <h1 style="text-align:center">Ended Events</h1>
+            </th>
+        </tr>
+    </table>
+    <br>
+    <table style="width:90%; margin:auto;" class="styled-table">
+        <thead>
+            <tr>
+            <th>Event ID</th>
+                <th>Event Name</th>
+                <th>Organizer</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $sql1="SELECT e.*, c.* FROM event e, club c WHERE e.E_Status ='Ended' AND e.C_ID = c.C_ID ";
+              $result1 = mysqli_query($con, $sql1);
+            while ($data = mysqli_fetch_array($result1)) { 
+            ?>
+            <tr>
+                <form action="" method="POST">
+                    <td><input type="hidden" name = "eid" value ="<?php echo $data['E_ID'];?>"><?php echo $data["E_ID"]; ?></td>
+                <td><?php echo $data["E_Name"]; ?></td>
+                <td><?php echo $data["C_Name"]; ?></td>
+                <td><?php echo $data["E_Day"]; ?></td>
+                <td><?php echo $data["E_Time"]; ?></td>
+                <td><?php echo $data["E_Duration"]; ?></td>
+                <td><button class="button" name="edit"><a href="A_EventF.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">Feedback</a></button>
+                <button class="button" name="edit"><a href="A_StudentEdit.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">Report</a></button></td>
             </form>
             </tr>
                 <?php }?>
@@ -141,11 +208,11 @@
 
 
 
-            if(isset($_POST['remove'])) {
-                $TP=$_POST['tp'];
-                echo  "<script>pop_up_success()</script>";
-                $sql1 = "DELETE FROM student_acc WHERE TP ='$TP'";
-                $result1 = mysqli_query($con, $sql1);
-                }
+            // if(isset($_POST['remove'])) {
+            //     $TP=$_POST['tp'];
+            //     echo  "<script>pop_up_success()</script>";
+            //     $sql1 = "DELETE FROM student_acc WHERE TP ='$TP'";
+            //     $result1 = mysqli_query($con, $sql1);
+            //     }
 
         ?>

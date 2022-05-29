@@ -150,7 +150,7 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-8">
-                                <h6 class="labels">Advicer Name:</h6>
+                                <h6 class="labels">Advisor Name:</h6>
                                 <input type="text" name="advicer" class="form-control" style="width:100%;" required>
                             </div>
                         </div>

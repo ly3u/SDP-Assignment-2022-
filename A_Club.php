@@ -108,7 +108,7 @@
                 <th>Email</th>
                 <th>Password</th>
                 <th>Categories</th>
-                <th>Advicer</th>
+                <th>Advisor</th>
                 <th>President</th>
                 <th>Action</th>
             </tr>

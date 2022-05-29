@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'config.php';
-    // error_reporting(0);
+    error_reporting(0);
     ob_start(); 
     $aid=$_SESSION['admin'];
 
@@ -50,7 +50,7 @@
             text: 'Are You Sure To Remove This Student Account ?  If Yes Please Click On Continue',
             showDenyButton: false,
             showCancelButton: true,
-            confirmButtonText: '<a href="A_Help.php" style="text-decoration:none; color:white; ">Continue</a>',
+            confirmButtonText: '<a href="A_Student.php" style="text-decoration:none; color:white; ">Continue</a>',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -88,7 +88,7 @@
             <th style="width:50px;">
                 <div class="wrapper">
                     <div class="link_wrapper">
-                        <a href="CMT_ClubMemberR.php" class="a">Add New</a>
+                        <a href="A_AddStudent.php" class="a">Add New</a>
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
                                 <path
