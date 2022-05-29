@@ -87,7 +87,7 @@
             exit;
         } else if (mysqli_num_rows($result1)==1) {
             $_SESSION['club']= $email; 
-            $url= "CMT_ClubMember.php";
+            $url= "CMT_Homepage.php";
             header("Location:" .$url);
             exit;
           }else {
