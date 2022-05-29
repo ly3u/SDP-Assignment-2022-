@@ -42,21 +42,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <h5><a class="nav-link active" aria-current="page" href="homepage.php">Home</a></h5>
+                        <h5><a class="nav-link active" aria-current="page" href="A_Homepage.php">Home</a></h5>
                     </li>
                     <h5>
                         <li class="nav-item dropdown">
-                        <a class="nav-link" href="CMT_ClubMember.php">Clubs</a>
+                        <a class="nav-link" href="A_Club.php">Clubs</a>
                         </li>
                     </h5>
                     <li class="nav-item">
-                        <h5> <a class="nav-link" href="CMT_Event.php">Events</a></h5>
+                        <h5> <a class="nav-link" href="A_Events.php">Events</a></h5>
                     </li>
                     <li class="nav-item">
-                        <h5> <a class="nav-link" href="CMT_ContactUs.php">Students</a></h5>
+                        <h5> <a class="nav-link" href="A_Student.php">Students</a></h5>
                     </li>
                     <li class="nav-item">
-                        <h5> <a class="nav-link" href="CMT_ContactUs.php">Helps</a></h5>
+                        <h5> <a class="nav-link" href="A_Help.php">Helps</a></h5>
                     </li>
                 </ul>
 
