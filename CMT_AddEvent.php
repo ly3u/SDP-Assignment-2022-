@@ -194,12 +194,12 @@
                 $day = $_POST['day'];
                 $time = $_POST['time'];
                 $duration = $_POST['duration'];
-                // $proposal = addslashes(file_get_contents($_FILES['proposal']['tmp_name']));
-                $pdf=$_FILES['proposal']['name'];
-          $pdf_type=$_FILES['proposal']['type'];
-          $pdf_size=$_FILES['proposal']['size'];
-          $pdf_tem_loc=$_FILES['proposal']['tmp_name'];
-          $pdf_store="pdf/".$pdf;
+                $proposal = addslashes(file_get_contents($_FILES['proposal']['tmp_name']));
+        //         $pdf=$_FILES['proposal']['name'];
+        //   $pdf_type=$_FILES['proposal']['type'];
+        //   $pdf_size=$_FILES['proposal']['size'];
+        //   $pdf_tem_loc=$_FILES['proposal']['tmp_name'];
+        //   $pdf_store="pdf/".$pdf;
 
         //   move_uploaded_file($pdf_tem_loc,$pdf_store);
 
@@ -209,7 +209,7 @@
                 $X =mysqli_num_rows($result11);
                 $id= 'E'.sprintf("%'04d", $X+1);
                 $query2 = "INSERT INTO `event`(`E_ID`, `E_Name`, `C_ID`, `E_Banner`, `E_Day`, `E_Time`, `E_Duration`, `E_Status`, `E_Description`, `E_Proposal`) VALUES
-                 ('$id','$ename','$c_id','$banner','$day','$time','$duration','Pending','$description','$pdf')";
+                 ('$id','$ename','$c_id','$banner','$day','$time','$duration','Pending','$description','$proposal')";
                 $result2 = mysqli_query($con, $query2);
                 echo "<script>pop_up_success()</script>";
                 }

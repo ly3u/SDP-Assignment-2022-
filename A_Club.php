@@ -3,12 +3,12 @@
     include 'config.php';
     // error_reporting(0);
     ob_start(); 
-    $cid=$_SESSION['club'];
+    $aid=$_SESSION['admin'];
 
-    $sql="SELECT * FROM club WHERE C_Email='$cid'";
+    $sql="SELECT * FROM admin WHERE A_Email='$aid'";
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_assoc($result);
-    $c_id = $row['C_ID'];
+    $A_id = $row['A_ID'];
 
 ?>
 <!DOCTYPE html>
@@ -19,17 +19,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
-
-    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>  
     <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="b.css">
     <style>
     button {
         text-align: middle;
     }
-
-
 
     .button {
         text-align: center;
@@ -45,14 +41,14 @@
     }
     </style>
     <script>
-    function pop_up_success() {
+        function pop_up_success() {
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Are Your Sure To Accept This Request ! If Yes Please Click On Continue',
+            text: 'Are You Sure To Remove This Student Account ?  If Yes Please Click On Continue',
             showDenyButton: false,
             showCancelButton: true,
-            confirmButtonText: '<a href="CMT_ClubMemberR.php" style="text-decoration:none; color:white; ">Continue</a>',
+            confirmButtonText: '<a href="A_Help.php" style="text-decoration:none; color:white; ">Continue</a>',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -62,14 +58,11 @@
         })
     };
 
-    function pop_up_success_1() {
+    function pop_up() {
         Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Are Your Sure To Reject This Request ! If Yes Please Click On Continue',
-            showDenyButton: false,
-            showCancelButton: true,
-            confirmButtonText: '<a href="CMT_ClubMemberR.php" style="text-decoration:none; color:white; ">Continue</a>',
+            icon: 'error',
+            title: 'Oops',
+            text: 'You Had Already Joined This Event !',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -82,18 +75,18 @@
 </head>
 
 <body>
-    <?php include 'nav_club.php'?>
+    <?php include 'nav_admin.php'?>
     <br>
     <table style="width:80%; margin:auto;">
-        <tr>
+    <tr>
             <th style="width:50px;"></th>
             <th style="width:650px;">
-                <h1 style="text-align:center">Request</h1>
+                <h1 style="text-align:center">Clubs</h1>
             </th>
             <th style="width:50px;">
                 <div class="wrapper">
                     <div class="link_wrapper">
-                        <a href="CMT_ClubMember.php" class="a">Member</a>
+                        <a href="A_AddClub.php" class="a">Add New</a>
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
                                 <path
@@ -107,57 +100,52 @@
         </tr>
     </table>
     <br>
-    <table style="width:80%; margin:auto;" class="styled-table">
+    <table style="width:90%; margin:auto;" class="styled-table">
         <thead>
             <tr>
-                <th>Student ID</th>
+            <th>Club ID</th>
                 <th>Name</th>
-                <th>Intake</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th style="padding-left:50px">Action</th>
+                <th>Password</th>
+                <th>Categories</th>
+                <th>Advicer</th>
+                <th>President</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php $sql1="SELECT a.*, c.* FROM p_club_member c, student_acc a WHERE c.C_ID = '$c_id' AND c.TP = a.TP ";
+            <?php $sql1="SELECT * FROM club ";
               $result1 = mysqli_query($con, $sql1);
             while ($data = mysqli_fetch_array($result1)) { 
             ?>
             <tr>
                 <form action="" method="POST">
-                    <td><input type="hidden" name="tp" value="<?php echo $data['TP'];?>"><?php echo $data["TP"]; ?></td>
-                    <td><?php echo $data["S_Name"]; ?></td>
-                    <td><?php echo $data["Intake"]; ?></td>
-                    <td><?php echo $data["S_Email"]; ?></td>
-                    <td><?php echo $data["S_Gender"]; ?></td>
-                    <td><button class="button" name="accept">Accept</button><button class="button"
-                            name="reject">Reject</button></td>
-                </form>
+                    <td><input type="hidden" name = "tp" value ="<?php echo $data['C_ID'];?>"><?php echo $data["C_ID"]; ?></td>
+                <td><?php echo $data["C_Name"]; ?></td>
+                <td><?php echo $data["C_Email"]; ?></td>
+                <td><?php echo $data["C_Password"]; ?></td>
+                <td><?php echo $data["Categories"]; ?></td>
+                <td><?php echo $data["C_Advicer"]; ?></td>
+                <td><?php echo $data["P_Name"]; ?></td>
+                <td><button class="button" name="edit"><a href="A_StudentEdit.php?tp=<?php echo $data['C_ID'] ?>" style="text-decoration: none; color:black;">View</a></button>
+            </form>
             </tr>
-            <?php } ?>
+                <?php }?>
         </tbody>
     </table>
 
 </body>
-
 </html>
 
 <?php 
 
 
-if(isset($_POST['accept'])) {
-    $TP=$_POST['tp'];
-    echo  "<script>pop_up_success()</script>";
-    $sql1 = "DELETE FROM p_club_member WHERE C_ID='$c_id' AND TP='$TP'";
-    $result1 = mysqli_query($con, $sql1);
-    $sql2 = "INSERT INTO `club_member`(`No`, `C_ID`, `TP`) VALUES ('','$c_id','$TP')";
-    $result2 = mysqli_query($con, $sql2);
-    }
 
-    if(isset($_POST['reject'])) {
-        $TP=$_POST['tp'];
-        echo  "<script>pop_up_success_1()</script>";
-        $sql1 = "DELETE FROM p_club_member WHERE C_ID='$c_id' AND TP='$TP'";
-        $result1 = mysqli_query($con, $sql1);
-        }
+            if(isset($_POST['remove'])) {
+                $TP=$_POST['tp'];
+                echo  "<script>pop_up_success()</script>";
+                $sql1 = "DELETE FROM student_acc WHERE TP ='$TP'";
+                $result1 = mysqli_query($con, $sql1);
+                }
+
         ?>

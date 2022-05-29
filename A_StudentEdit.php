@@ -22,7 +22,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel=”stylesheet” href="profile.css" crossorigin=”anonymous”>
@@ -63,7 +62,21 @@
         Swal.fire({
             icon: 'error',
             title: 'Oops',
-            text: 'Password must exist 8 character !',
+            text: 'Password must at least 8 character !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+
+    function pop_up_c() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'TP number must exist 8 character !',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
@@ -105,12 +118,12 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <h6 class="labels">TP no:</h6>
-                            <input type="text" name="tp" class="form-control"
+                            <input type="text" name="tp" class="form-control" required
                                 value="<?php echo $data['TP'] ?>" style="width:100%;">
                         </div>
                         <div class="col-md-6">
                             <h6 class="labels">D.O.B:</h6>
-                            <input type="text" name="dob" class="form-control"
+                            <input type="text" name="dob" class="form-control" required
                                 value="<?php echo $data['D.O.B'] ?>" style="width:100%;">
                         
                         </div>
@@ -120,19 +133,23 @@
                         <div class="col-md-8">
                             <h6 class="labels">Name:</h6>
                             <input type="text" name="name" class="form-control"
-                                value="<?php echo $data['S_Name'] ?>" style="width:100%;">
+                                value="<?php echo $data['S_Name'] ?>" style="width:100%;" required>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <h6 class="labels">Gender:</h6>
-                            <input type="text" name="gender" class="form-control"
-                                value="<?php echo $data['S_Gender'] ?>" style="width:100%;">
+                            <select class="form-control" name="gender" required  value="<?php echo $data['S_Gender'] ?>">
+                                    <option> <?php echo $data['S_Gender'] ?>
+                                    </option>
+                                    <option>M</option>
+                                    <option>F</option>
+                                </select>
                         </div>
                         <div class="col-md-6">
                             <h6 class="labels">Intake:</h6>
                             <input type="text" name="intake" class="form-control"
-                                value="<?php echo $data['Intake'] ?>" style="width:100%;">
+                                value="<?php echo $data['Intake'] ?>" style="width:100%;" required>
                         </div>
                     </div>
 
@@ -140,14 +157,14 @@
                         <div class="col-md-8">
                             <h6 class="labels">Email:</h6>
                             <input type="text" name="email" class="form-control"
-                                value="<?php echo $data['S_Email'] ?>" style="width:100%;">
+                                value="<?php echo $data['S_Email'] ?>" style="width:100%;" required>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-8">
                             <h6 class="labels">Password:</h6>
                             <input type="text" name="password" class="form-control"
-                                value="<?php echo $data['S_Password'] ?>" style="width:100%;">
+                                value="<?php echo $data['S_Password'] ?>" style="width:100%;" required>
                         </div>
                     </div>
                 </div>
@@ -187,7 +204,6 @@
                 $password=$_POST['password'];
                 if (strlen($password) < 8){
                     echo  "<script>pop_up()</script>";
-
                 }else{
                 echo  "<script>pop_up_success()</script>";
                 $sql11 = "UPDATE `student_acc` SET `TP`='$TP',`S_Name`='$name',`S_Gender`='$gender',`D.O.B`='$DOB',`Intake`='$intake',`S_Email`='$email',`S_Password`='$password' WHERE TP = '$TP'";
