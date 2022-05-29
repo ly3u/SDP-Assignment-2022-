@@ -21,6 +21,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel=”stylesheet” href="profile.css" crossorigin=”anonymous”>
@@ -39,6 +41,38 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+        function pop_up_success() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Finish Editing ?  If Yes Please Click On Continue',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: '<a href="A_Student.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+
+    function pop_up() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'Password must exist 8 character !',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+    </script>
 </head>
 
 <body>
@@ -46,6 +80,7 @@
     <?php include 'nav_admin.php'?>
 
     <div class="container  mt-5 mb-5" style=" background-color: #FFE8D4; border-radius:5%;">
+    <form action="" method="POST">
         <?php
      $sql2="SELECT * FROM student_acc WHERE TP='$TP'";
      $result2=mysqli_query($con, $sql2);
@@ -119,6 +154,7 @@
             </div>
 
         </div>
+</form>
     </div>
     </div>
     </div>
@@ -149,9 +185,13 @@
                 $intake=$_POST['intake'];
                 $email=$_POST['email'];
                 $password=$_POST['password'];
+                if (strlen($password) < 8){
+                    echo  "<script>pop_up()</script>";
+
+                }else{
                 echo  "<script>pop_up_success()</script>";
-                $sql1 = "DELETE FROM student_acc WHERE TP ='$TP'";
-                $result1 = mysqli_query($con, $sql1);
+                $sql11 = "UPDATE `student_acc` SET `TP`='$TP',`S_Name`='$name',`S_Gender`='$gender',`D.O.B`='$DOB',`Intake`='$intake',`S_Email`='$email',`S_Password`='$password' WHERE TP = '$TP'";
+                $result11 = mysqli_query($con, $sql11);}
                 }
 
         ?>
