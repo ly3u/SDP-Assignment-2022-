@@ -214,7 +214,6 @@
         $result1 = mysqli_query($con, $sql1);
         }
 
-<<<<<<< HEAD
     if(isset($_POST['submit'])) {   
         $EID=$_POST['id'];
         $review = $_POST['feedbackText'];
@@ -229,14 +228,6 @@
         $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '$tp', '$review')";
         $feedbackResult = mysqli_query($con, $feedbackSQL);
         unset($_POST['submit']);
-=======
-    if(isset($_POST['feedbackText'])) {        
-        $EID=$_POST['eid'];
-        $review = $_POST['feedbackText'];
-        $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('E0004', '$tp', '$review')";
-        // $feedbackSQL = "INSERT INTO event_feedback (`E_ID`, `TP`, `Review`) VALUES ('$EID', '$tp', '$review')";
-        $feedbackResult = mysqli_query($con, $feedbackSQL);        
->>>>>>> cccc70d32dc47ca9ad5018d8ac376e2c6ee2117a
         }
         }
 ?>
