@@ -39,11 +39,7 @@
 
 <body>
     <?php
-        if(isset($email)){
-            require_once ('nav_login.php');
-        }else{
-            require_once ('Nav.php');
-        }
+        include 'nav_club.php'; 
     ?>
     <div class="container py-4">
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
