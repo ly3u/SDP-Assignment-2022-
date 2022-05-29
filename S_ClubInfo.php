@@ -96,7 +96,7 @@
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold"><?php echo $row6['C_Name']; $CID=$row6['C_ID'];?></h1>
-                <p class="col-md-8 fs-4"><?php echo $row6['C_Description']; ?></p>
+                <p class="col-md-11 fs-4"><?php echo $row6['C_Description']; ?></p>
                 <br>
                 <form method="POST">
                     <button class="btn btn-primary btn-lg" name="join">Join Club</button>
@@ -163,10 +163,10 @@
                                 <div class="card-body" style="height:150px;">
                                     <h3 class="card-text fw-bold"><?php echo $row2['E_Name']; ?></h3>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"><a
-                                                    href="S_EventDetail.php?Eid=<?php echo $row2['E_ID'] ?>"
-                                                    style=" color:black;">Details</a></button>
+                                        <div class="btn-group" style="position: absolute; bottom: 2%;>
+                                            <a href=" S_EventDetail.php?Eid=<?php echo $row2['E_ID'] ?>"
+                                            style=" color:black;"><button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Details</button></a>
                                         </div>
                                     </div>
                                 </div>
