@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'config.php';
-    error_reporting(0);
+    // error_reporting(0);
     ob_start(); 
     $aid=$_SESSION['admin'];
 
@@ -47,7 +47,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Is The Problem Solved ?  If Yes Please Click On Continue',
+            text: 'Are You Sure To Remove This Student Account ?  If Yes Please Click On Continue',
             showDenyButton: false,
             showCancelButton: true,
             confirmButtonText: '<a href="A_Help.php" style="text-decoration:none; color:white; ">Continue</a>',
@@ -80,36 +80,56 @@
     <?php include 'nav_admin.php'?>
     <br>
     <table style="width:80%; margin:auto;">
-        <tr>
+    <tr>
             <th style="width:50px;"></th>
             <th style="width:650px;">
-                <h1 style="text-align:center">APU Help Center</h1>
+                <h1 style="text-align:center">Student Account</h1>
             </th>
-           
+            <th style="width:50px;">
+                <div class="wrapper">
+                    <div class="link_wrapper">
+                        <a href="CMT_ClubMemberR.php" class="a">Add New</a>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+                                <path
+                                    d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </th>
         </tr>
     </table>
     <br>
-    <table style="width:80%; margin:auto;" class="styled-table">
+    <table style="width:90%; margin:auto;" class="styled-table">
         <thead>
             <tr>
+            <th>TP</th>
                 <th>Name</th>
+                <th>Gender</th>
+                <th>D.O.B</th>
+                <th>Intake</th>
                 <th>Email</th>
-                <th style = "width:50%;">Message</th>
+                <th>Password</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php $sql1="SELECT * FROM help ";
+            <?php $sql1="SELECT * FROM student_acc ";
               $result1 = mysqli_query($con, $sql1);
             while ($data = mysqli_fetch_array($result1)) { 
             ?>
             <tr>
                 <form action="" method="POST">
-                    <input type="hidden" name = "no" value ="<?php echo $data['No'];?>">
-                <td><?php echo $data["Name"]; ?></td>
-                <td><?php echo $data["Email"]; ?></td>
-                <td><?php echo $data["Message"]; ?></td>
-                <td><button class="button" name="solved">Solved</button></td>
+                    <td><input type="hidden" name = "tp" value ="<?php echo $data['TP'];?>"><?php echo $data["TP"]; ?></td>
+                <td><?php echo $data["S_Name"]; ?></td>
+                <td><?php echo $data["S_Gender"]; ?></td>
+                <td><?php echo $data["D.O.B"]; ?></td>
+                <td><?php echo $data["Intake"]; ?></td>
+                <td><?php echo $data["S_Email"]; ?></td>
+                <td><?php echo $data["S_Password"]; ?></td>
+                <td><button class="button" name="edit"><a href="A_StudentEdit.php?tp=<?php echo $data['TP'] ?>" style="text-decoration: none; color:black;">Edit</a></button><button class="button" name="remove">Remove</button></td>
             </form>
             </tr>
                 <?php }?>
@@ -123,10 +143,10 @@
 
 
 
-            if(isset($_POST['solved'])) {
-                $no=$_POST['no'];
+            if(isset($_POST['remove'])) {
+                $TP=$_POST['tp'];
                 echo  "<script>pop_up_success()</script>";
-                $sql1 = "DELETE FROM help WHERE No ='$no'";
+                $sql1 = "DELETE FROM student_acc WHERE TP ='$TP'";
                 $result1 = mysqli_query($con, $sql1);
                 }
 

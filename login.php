@@ -80,8 +80,8 @@
             header("Location:" .$url);
             exit;
         } else if (mysqli_num_rows($result2)==1) {
-            $_SESSION['email']= $email; 
-            $url= "Adminmain.php";
+            $_SESSION['admin']= $email; 
+            $url= "A_Help.php";
             header("Location:" .$url);
             exit;
             exit;
