@@ -127,7 +127,7 @@
                 <td><?php echo $data["Categories"]; ?></td>
                 <td><?php echo $data["C_Advicer"]; ?></td>
                 <td><?php echo $data["P_Name"]; ?></td>
-                <td><button class="button" name="edit"><a href="A_StudentEdit.php?tp=<?php echo $data['C_ID'] ?>" style="text-decoration: none; color:black;">View</a></button>
+                <td><button class="button" name="edit"><a href="A_ClubV.php?cid=<?php echo $data['C_ID'] ?>" style="text-decoration: none; color:black;">View</a></button>
             </form>
             </tr>
                 <?php }?>

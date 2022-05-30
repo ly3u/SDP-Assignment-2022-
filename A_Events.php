@@ -194,7 +194,7 @@
                 <td><?php echo $data["E_Time"]; ?></td>
                 <td><?php echo $data["E_Duration"]; ?></td>
                 <td><button class="button" name="edit"><a href="A_EventF.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">Feedback</a></button>
-                <button class="button" name="edit"><a href="A_StudentEdit.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">Report</a></button></td>
+                <button class="button" name="edit"><a href="A_EventR.php?eid=<?php echo $data['E_ID'] ?>" style="text-decoration: none; color:black;">Report</a></button></td>
             </form>
             </tr>
                 <?php }?>

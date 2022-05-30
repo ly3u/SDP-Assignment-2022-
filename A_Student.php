@@ -148,6 +148,14 @@
                 echo  "<script>pop_up_success()</script>";
                 $sql1 = "DELETE FROM student_acc WHERE TP ='$TP'";
                 $result1 = mysqli_query($con, $sql1);
+                $sql2 = "DELETE FROM club_member WHERE TP ='$TP'";
+                $result2 = mysqli_query($con, $sql2);
+                $sql3 = "DELETE FROM event_participant WHERE TP ='$TP'";
+                $result3 = mysqli_query($con, $sql3);
+                $sql4 = "DELETE FROM event_feedback WHERE TP ='$TP'";
+                $result4 = mysqli_query($con, $sql4);
+                $sql5 = "DELETE FROM p_club_member WHERE TP ='$TP'";
+                $result5 = mysqli_query($con, $sql5);
                 }
 
         ?>

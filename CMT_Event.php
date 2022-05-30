@@ -21,7 +21,12 @@
 
 <head>
     <title>Events</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="b.css">
+    <link rel="stylesheet" href="popup.css">
+
     <style>
     #img {
 
@@ -51,6 +56,40 @@
         border-radius: 1em;
     }
     </style>
+    <script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    function openForm() {
+        var EID = document.getElementById("Eid").value;
+        <?php $ID = "<script>document.write(EID)
+    </script>"?>
+    document.getElementById("myText").value = EID;
+    document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }
+
+    function pop_up_success_c() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Report Submitted Successfully!',
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: '<a href="CMT_Event.php" style="text-decoration:none; color:white; ">Continue</a>',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        })
+    };
+    </script>
 </head>
 
 <body>
@@ -102,7 +141,9 @@
                                     </th>
                                     <th></th>
                                     <td style="float:right; padding-left:200px;">
-                                        <form method="POST"><button class="button" name="join">&nbsp; Submit Report
+                                        <input type="hidden" name="eid" id="Eid" value="<?php echo $data['E_ID'];?>">
+                                        <form method="POST"><button class="button" name="join"
+                                                onclick="openForm(); event.preventDefault(); ">&nbsp; Submit Report
                                                 &nbsp;
                                             </button><button class="button" name="join"><a
                                                     href="CMT_EventEdit.php?Eid=<?php echo $data['E_ID'] ?>"
@@ -184,4 +225,47 @@
         </div>
 
     </div>
+    <div class="form-popup" id="myForm">
+        <form action="" method="post" class="form-container">
+            <h1>Report</h1>
+            <input type="hidden" id='myText' name='id'>
+            <table>
+                <tr>
+                    <th style="width:250px;">Number of Applicants: </th>
+                    <td><input type="number" name="participant" style="width:50%;"></td>
+                </tr>
+                <tr>
+                    <th style="width:250px;">Number of Attendees: </th>
+                    <td><input type="number" name="attend" style="width:50%;"></td>
+                </tr>
+            </table><br>
+            <h5>Comment</h5>
+            <textarea type="text" placeholder="Enter Comment" rows="4" name="comment" required></textarea>
+
+            <button type="submit" class="btn" name="submit">Confirm</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
 </body>
+
+<?php 
+
+    if(isset($_POST['submit'])) {   
+        $EID=$_POST['id'];
+        $participant = $_POST['participant'];
+        $attend = $_POST['attend'];
+        $review = $_POST['comment'];
+
+       
+        echo  "<script>pop_up_success_c()</script>";
+        $feedbackSQL = "INSERT INTO `event_report`(`E_ID`, `No`, `participant`, `attend`, `Comment`) VALUES ('$EID','','$participant','$attend','$review')";
+        $feedbackResult = mysqli_query($con, $feedbackSQL);
+        $feedbackSQL1 = "UPDATE `event` SET `E_Status`='Ended' WHERE E_ID = '$EID'";
+        $feedbackResult1 = mysqli_query($con, $feedbackSQL1);
+        
+        }
+?>
+<script>
