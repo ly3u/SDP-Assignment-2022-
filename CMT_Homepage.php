@@ -31,6 +31,7 @@
     <title>Club Information </title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="table.css">
     <script>
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
@@ -44,15 +45,33 @@
         document.getElementById("myForm").style.display = "none";
     }
     </script>
+    <style>
+        <style>
+    button {
+        text-align: middle;
+    }
+
+
+
+    .button {
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px 2px;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+        border-radius: 1em;
+    }
+    </style>
+    </style>
 </head>
 
 <body>
     <?php
-    if(isset($email)){
-        require_once ('nav_login.php');
-    }else{
-        require_once ('Nav.php');
-    }
+    include 'nav_club.php';
     ?>
     <div class="container py-4" style="overflow-anchor: none;">
         <div class="d-flex p-4 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
@@ -70,19 +89,30 @@
         </div><br>
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Announcement</h1>
-                <?php while ($row1 = mysqli_fetch_array($result1)) { ?>
-                <h4 class="display-9 fw-bold">Date Posted: <?php echo $row1["Date_Post"]?></h4>
-                <form method="POST">
-                    <textarea class="col-md-11 fs-4" type="text" name="a<?php echo $row1["A_ID"]?>" rows="7"
-                        class="form-control"><?php echo $row1["Announcement"]; ?></textarea>
-                    <br>
-                    <?php aUpdate($row1["A_ID"]); ?>
-                    <button class="btn btn-danger btn-lg" name="aDelete<?php echo $row1["A_ID"]?>">Delete</button>
-                    <br>
-                    <br>
-                </form>
-                <?php } ?>
+                <h1 class="display-5 fw-bold">Announcement</h1><br>
+                <table style="width: 100%; margin:auto;" class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Announcement</th>
+                            <th>Date Posted</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php while ($row1 = mysqli_fetch_array($result1)) { ?>
+                        <tr>
+                            <form action="" method="POST">
+                                <input type="hidden" name="aid"
+                                        value="<?php echo $row1['A_ID'];?>">
+                                <td><?php echo $row1["Announcement"]; ?></td>
+                                <td><?php echo $row1["Date_Post"]; ?></td>
+                                <td><button class="button" name="remove">Remove</button></td>
+                            </form>
+                        </tr>
+                        <?php }?>
+                    </tbody>
+                </table>
+               
             </div>
         </div>
         <br>
@@ -133,6 +163,13 @@
     
     if (isset($_SESSION['aID'])) {
         $result2 = mysqli_query($con, $_SESSION['aID']);        
+    }
+
+    if(isset($_POST['remove'])){
+        $aid=$_POST['aid'];
+                $sql1 = "DELETE FROM announcement WHERE A_ID='$aid'";
+                $result1 = mysqli_query($con, $sql1);
+                echo  "<script>window.location.reload();</script>"; 
     }
 
     if(isset($_POST['cmtUpdate'])) {
