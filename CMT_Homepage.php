@@ -33,10 +33,11 @@
     <link rel="stylesheet" href="popup.css">
     <link rel="stylesheet" href="table.css">
     <script>
+    // Stop sending sql on browser refresh
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
-
+    // for pop up in add announcement
     function openForm() {
         document.getElementById("myForm").style.display = "block";
     }
@@ -46,8 +47,7 @@
     }
     </script>
     <style>
-        <style>
-    button {
+    <style>button {
         text-align: middle;
     }
 
@@ -73,6 +73,7 @@
     <?php
     include 'nav_club.php';
     ?>
+    <!-- Update Club's Description -->
     <div class="container py-4" style="overflow-anchor: none;">
         <div class="d-flex p-4 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
@@ -87,9 +88,14 @@
             <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['C_Logo']); ?>" alt=""
                 style="width:250px; height:250px; margin-top: 25px;">
         </div><br>
+        <!-- Add and Remove Club's Announcement -->
         <div class="d-flex p-5 mb-4 bg-light rounded-3" style=" border-radius: 25px;">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Announcement</h1><br>
+                <div style="display: flex; padding-bottom: 10px;">
+                    <h1 class="display-5 fw-bold">Announcement</h1><br>
+                    <button class=" btn btn-info btn-lg" onclick="openForm(); event.preventDefault();"
+                        style="width: 10%; margin-left: auto;">Add</button>
+                </div>
                 <table style="width: 100%; margin:auto;" class="styled-table">
                     <thead>
                         <tr>
@@ -99,11 +105,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php while ($row1 = mysqli_fetch_array($result1)) { ?>
+                        <?php while ($row1 = mysqli_fetch_array($result1)) { ?>
                         <tr>
                             <form action="" method="POST">
-                                <input type="hidden" name="aid"
-                                        value="<?php echo $row1['A_ID'];?>">
+                                <input type="hidden" name="aid" value="<?php echo $row1['A_ID'];?>">
                                 <td><?php echo $row1["Announcement"]; ?></td>
                                 <td><?php echo $row1["Date_Post"]; ?></td>
                                 <td><button class="button" name="remove">Remove</button></td>
@@ -112,10 +117,11 @@
                         <?php }?>
                     </tbody>
                 </table>
-               
+
             </div>
         </div>
         <br>
+        <!-- Update Club's Committees -->
         <div class="d-flex p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">Club Committees</h1>
@@ -135,10 +141,21 @@
                         value="<?php echo $row['VP_Name']?>"></input>
                     <br>
                     <br>
-                    <button class=" btn btn-info btn-lg" name="cmtUpdate">Update</button>
+                    <button class=" btn btn-secondary btn-lg" name="cmtUpdate">Update</button>
                 </form>
             </div>
         </div>
+    </div>
+    <!-- add announcement pop up -->
+    <div class="form-popup" id="myForm">
+        <form action="" method="post" class="form-container">
+            <h1>New Annoucement</h1>
+            <input type="hidden" id='myText' name='id'>
+            <textarea type="text" placeholder="Enter New Announcement..." rows="4" name="anmText" required></textarea>
+
+            <button type="submit" class="btn" name="submitAnm">Confirm</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
     </div>
 </body>
 
@@ -150,19 +167,6 @@
         $sql2 ="UPDATE club SET C_Description = '$description' WHERE C_ID='$CID'";
         $result2 = mysqli_query($con, $sql2);  
         echo  "<script>window.location.reload();</script>"; 
-    }
-    function aUpdate($A_ID) {
-        echo '<button class="btn btn-primary btn-lg" name="'.$A_ID.'">Update</button>';
-        if (isset($_POST[$A_ID])) {
-            $announcement = $_POST['a'.$A_ID];
-            $aSQL ="UPDATE announcement SET Announcement = '$announcement' WHERE A_ID='$A_ID'";
-            $_SESSION['aID'] = $aSQL; 
-            echo  '<script>window.location.reload();</script>'; 
-        }
-    }
-    
-    if (isset($_SESSION['aID'])) {
-        $result2 = mysqli_query($con, $_SESSION['aID']);        
     }
 
     if(isset($_POST['remove'])){
@@ -180,4 +184,13 @@
         $cmtResult = mysqli_query($con, $cmtSQL);  
         echo  "<script>window.location.reload();</script>"; 
     }
+
+    if(isset($_POST['submitAnm'])) {
+        $date = date('Y/m/d', time());
+        $anm = $_POST['anmText'];
+        $anmSQL = "INSERT INTO announcement (`Announcement`, `C_ID`, `Date_Post`) VALUES ('$anm', '$CID', '$date')";
+        $anmResult = mysqli_query($con, $anmSQL);        
+        echo  "<script>window.location.reload(true);</script>"; 
+        }
+        
 ?>
