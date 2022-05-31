@@ -160,12 +160,12 @@
                                             <input type="file" id="img" name="banner" accept="image/*">
                                         </div>
                                     </div>
-                                    <div class="col order-12">
+                                    <!-- <div class="col order-12">
                                         <div class="form-group">
                                             <label>Event Proposal</label><br>
                                             <input type="file" id="img" name="proposal" accept=".pdf">
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -194,7 +194,7 @@
                 $day = $_POST['day'];
                 $time = $_POST['time'];
                 $duration = $_POST['duration'];
-                $proposal = addslashes(file_get_contents($_FILES['proposal']['tmp_name']));
+                // $proposal = addslashes(file_get_contents($_FILES['proposal']['tmp_name']));
         //         $pdf=$_FILES['proposal']['name'];
         //   $pdf_type=$_FILES['proposal']['type'];
         //   $pdf_size=$_FILES['proposal']['size'];
@@ -208,8 +208,8 @@
                 $result11 = mysqli_query($con, $sql11);
                 $X =mysqli_num_rows($result11);
                 $id= 'E'.sprintf("%'04d", $X+1);
-                $query2 = "INSERT INTO `event`(`E_ID`, `E_Name`, `C_ID`, `E_Banner`, `E_Day`, `E_Time`, `E_Duration`, `E_Status`, `E_Description`, `E_Proposal`) VALUES
-                 ('$id','$ename','$c_id','$banner','$day','$time','$duration','Pending','$description','$proposal')";
+                $query2 = "INSERT INTO `event`(`E_ID`, `E_Name`, `C_ID`, `E_Banner`, `E_Day`, `E_Time`, `E_Duration`, `E_Status`, `E_Description`) VALUES
+                 ('$id','$ename','$c_id','$banner','$day','$time','$duration','Pending','$description')";
                 $result2 = mysqli_query($con, $query2);
                 echo "<script>pop_up_success()</script>";
                 }
