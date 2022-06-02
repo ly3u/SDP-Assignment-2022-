@@ -111,7 +111,7 @@
                                 <td><input type="hidden" name="cid" 
                                             value="<?php echo $data['C_ID'];?>"><?php echo $data["C_ID"]; ?></td>
                                 <td><?php echo $data["C_Name"]; ?></td>
-                                <th><button name = "leave" class="button">Leave</button></th>
+                                <th><a href="S_ClubInfo.php?link=<?php echo $data['C_ID'] ?>"><button name = "leave" class="button">View</button></a></th>
                             </tr>
                             <?php }?>
                         </tbody>
@@ -139,12 +139,6 @@
 </html>
 
 <?php 
-    if(isset($_POST['leave'])) {
-        $CID=$_POST['cid'];
-        echo  "<script>pop_up_success()</script>";
-        $sql1 = "DELETE FROM club_member WHERE C_ID='$CID' AND TP='$tp'";
-        $result1 = mysqli_query($con, $sql1);
-        }
 
 
 ?>
