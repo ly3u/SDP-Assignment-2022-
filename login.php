@@ -3,57 +3,68 @@
 
     include 'config.php';
 
+    if(isset($_SESSION['email'])) {
+        header("location:homepage.php");
+    } elseif(isset($_SESSION['club'])) {
+        header("location:CMT_Homepage.php");
+    }elseif(isset($_SESSION['admin'])) {
+        header("location:A_Homepage.php");
+    }
+
     // error_reporting(0);
 
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="login_and_register.css?v=<?php echo time(); ?>" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-        <title>APU Club and Society</title>
-        <link rel="stylesheet" href="NavBar1.css?v=<?php echo time(); ?>">
-        <style>
-            body {
-                background: #f0f0f0;
-            }
-        </style>
 
-        <script>
-            function pop_up(){
-                Swal.fire({
-                    icon:'error',
-                    title: 'Oops',
-                    text: 'You have entered the wrong email or password.',
-                    showCancelButton: true,
-                    confirmButtonText: 'Retry again'
-                })
-            }
-        </script>
+<head>
+    <link href="login_and_register.css?v=<?php echo time(); ?>" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <title>APU Club and Society</title>
+    <link rel="stylesheet" href="NavBar1.css?v=<?php echo time(); ?>">
+    <style>
+    body {
+        background: #f0f0f0;
+    }
+    </style>
 
-    </head>
+    <script>
+    function pop_up() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'You have entered the wrong email or password.',
+            showCancelButton: true,
+            confirmButtonText: 'Retry again'
+        })
+    }
+    </script>
 
-    <body>
+</head>
 
-        <div class="form_container">
-            <form action="" method="POST" class="login">
-                <p class="login_word" style="font-size: 2rem; font-weight: 100;">Login</p>
-                <div class="input-field">
-                    <input type="email" placeholder="Email Address" name="email" required>
-                </div>
-                <div class="input-field">
-                    <input type="password" placeholder="Password" name="password" required>
-                </div>
-                <div class="input-field">
-                    <button name="submit" class="btn">Login</button>
-                </div>
-                <p class="login-register_exchange">Can't Login? &nbsp<a class="account_a" href="ContactUs.php">  Contact Admin</a></p>
-                <p class="home"><a href="homepage.php" >Back to Home Page</a></p>
-            </form>
-        </div>
+<body>
 
-    </body>
+    <div class="form_container">
+        <form action="" method="POST" class="login">
+            <p class="login_word" style="font-size: 2rem; font-weight: 100;">Login</p>
+            <div class="input-field">
+                <input type="email" placeholder="Email Address" name="email" required>
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+            <div class="input-field">
+                <button name="submit" class="btn">Login</button>
+            </div>
+            <p class="login-register_exchange">Can't Login? &nbsp<a class="account_a" href="ContactUs.php"> Contact
+                    Admin</a></p>
+            <p class="home"><a href="homepage.php">Back to Home Page</a></p>
+        </form>
+    </div>
+
+</body>
+
 </html>
 
 <?php 
