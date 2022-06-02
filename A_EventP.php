@@ -130,9 +130,7 @@
                             <table>
                                 <tr>
                                     <th class="left" style="width:80%;">
-                                        <h3><?php echo $data["E_Name"]; ?></h3><button class="button"
-                                            name="accept">&nbsp; Proposal &nbsp;
-                                        </button>
+                                        <h3><?php echo $data["E_Name"]; ?></h3>
                                     </th>
                                     <th></th>
                                     <td class="right">
