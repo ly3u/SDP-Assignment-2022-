@@ -6,6 +6,7 @@
     error_reporting(0);
 
     ob_start();
+    
 
     $email=$_SESSION['admin'];
 
@@ -46,33 +47,40 @@
     .left {
         padding-left: 30px;
     }
+
     .footer-basic {
-    position: relative;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    color:#4b4c4d;
-    width: 100%;
-    list-style:none;
-    text-align:center;
-    font-size:18px !important;
-    line-height:1.6;
-    margin-bottom:0;
-}
-.footer-basic a {
-    color:inherit;
-    text-decoration:none;
-    opacity:0.8;
-}
-.footer-basic :hover {
-    background-color: #b9b9b9;
-    opacity:1;
-}
-.copyright {
-    font-size:13px;
-    color:black;
-    width: 110px;
+        position: relative;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+        color: #4b4c4d;
+        width: 100%;
+        list-style: none;
+        text-align: center;
+        font-size: 18px !important;
+        line-height: 1.6;
+        margin-bottom: 0;
     }
-* {box-sizing:border-box}
+
+    .footer-basic a {
+        color: inherit;
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    .footer-basic :hover {
+        background-color: #b9b9b9;
+        opacity: 1;
+    }
+
+    .copyright {
+        font-size: 13px;
+        color: black;
+        width: 110px;
+    }
+
+    * {
+        box-sizing: border-box
+    }
     </style>
 </head>
 
@@ -156,13 +164,17 @@
         </div>
     </section>
     <br><br>
-    
+
     <br><br>
     <hr>
     <div class="footer-basic">
-        <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a href="contactus.php">Contact Us</a>
+        <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a
+            href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a
+            href="contactus.php">Contact Us</a>
     </div>
-    <center><p class="copyright">UniClub © 2022</p></center>
+    <center>
+        <p class="copyright">UniClub © 2022</p>
+    </center>
 
 
 
