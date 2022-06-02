@@ -153,7 +153,7 @@
                         <div class="col-8">
                             <h1 align="left">About Us</h1><br>
                             <h4 align="left">The APU Club and Society Management System is designed by the UniClub sdn bhd.</h4>
-                            <h4 align="left">This wedsite is design in.</h4>
+                            <h4 align="left">The .</h4>
                         </div>
                     </div>
                 </div>

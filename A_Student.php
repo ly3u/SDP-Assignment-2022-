@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'config.php';
-    error_reporting(0);
+    // error_reporting(0);
     ob_start(); 
     $aid=$_SESSION['admin'];
 
@@ -9,6 +9,9 @@
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_assoc($result);
     $A_id = $row['A_ID'];
+
+    $query = "SELECT S_Gender, count(*) as number FROM student_acc GROUP BY S_Gender";  
+    $result = mysqli_query($con, $query); 
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="b.css">
     <style>
@@ -43,7 +46,7 @@
     }
     </style>
     <script>
-        function pop_up_success() {
+    function pop_up_success() {
         Swal.fire({
             icon: 'success',
             title: 'Success',
@@ -74,13 +77,39 @@
         })
     };
     </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Gender', 'Number'],
+            <?php  
+                          while($row = mysqli_fetch_array($result))  
+                          {  
+                               echo "['".$row["S_Gender"]."', ".$row["number"]."],";  
+                          }  
+                          ?>
+        ]);
+        var options = {
+            title: 'Percentage of Male and Female Student',
+            //is3D:true,  
+            pieHole: 0.4
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+    </script>
 </head>
 
 <body>
     <?php include 'nav_admin.php'?>
     <br>
     <table style="width:80%; margin:auto;">
-    <tr>
+        <tr>
             <th style="width:50px;"></th>
             <th style="width:650px;">
                 <h1 style="text-align:center">Student Account</h1>
@@ -102,10 +131,11 @@
         </tr>
     </table>
     <br>
+    <div id="piechart" style="width: 900px; height: 500px; margin:auto; border-radius: 25px;"></div>  <br>
     <table style="width:90%; margin:auto;" class="styled-table">
         <thead>
             <tr>
-            <th>TP</th>
+                <th>TP</th>
                 <th>Name</th>
                 <th>Gender</th>
                 <th>D.O.B</th>
@@ -122,21 +152,24 @@
             ?>
             <tr>
                 <form action="" method="POST">
-                    <td><input type="hidden" name = "tp" value ="<?php echo $data['TP'];?>"><?php echo $data["TP"]; ?></td>
-                <td><?php echo $data["S_Name"]; ?></td>
-                <td><?php echo $data["S_Gender"]; ?></td>
-                <td><?php echo $data["D.O.B"]; ?></td>
-                <td><?php echo $data["Intake"]; ?></td>
-                <td><?php echo $data["S_Email"]; ?></td>
-                <td><?php echo $data["S_Password"]; ?></td>
-                <td><button class="button" name="edit"><a href="A_StudentEdit.php?tp=<?php echo $data['TP'] ?>" style="text-decoration: none; color:black;">Edit</a></button><button class="button" name="remove">Remove</button></td>
-            </form>
+                    <td><input type="hidden" name="tp" value="<?php echo $data['TP'];?>"><?php echo $data["TP"]; ?></td>
+                    <td><?php echo $data["S_Name"]; ?></td>
+                    <td><?php echo $data["S_Gender"]; ?></td>
+                    <td><?php echo $data["D.O.B"]; ?></td>
+                    <td><?php echo $data["Intake"]; ?></td>
+                    <td><?php echo $data["S_Email"]; ?></td>
+                    <td><?php echo $data["S_Password"]; ?></td>
+                    <td><button class="button" name="edit"><a href="A_StudentEdit.php?tp=<?php echo $data['TP'] ?>"
+                                style="text-decoration: none; color:black;">Edit</a></button><button class="button"
+                            name="remove">Remove</button></td>
+                </form>
             </tr>
-                <?php }?>
+            <?php }?>
         </tbody>
     </table>
 
 </body>
+
 </html>
 
 <?php 
