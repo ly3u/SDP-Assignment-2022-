@@ -20,6 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <link rel="shortcut icon" href="photo/UNICLUBb1.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -69,6 +70,7 @@
             }
         })
     }
+
     function pop_up_successs() {
         Swal.fire({
             icon: 'success',
@@ -166,13 +168,13 @@
                         echo  "<script>pop_up_success()</script>";
                         $sql2 ="UPDATE `event` SET `E_Status`='ongoing' WHERE E_ID = '$EID'";
                         $result2 = mysqli_query($con, $sql2);
-
+            }
                     if(isset($_POST['reject'])) {
 
                         echo  "<script>pop_up_successs()</script>";
                         $sql2 ="UPDATE `event` SET `E_Status`='Rejected' WHERE E_ID = '$EID'";
                         $result2 = mysqli_query($con, $sql2);
-                    }
+                    
                 }
 
         ?>

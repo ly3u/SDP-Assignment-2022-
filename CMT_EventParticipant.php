@@ -23,6 +23,7 @@
     <title>APU Club and Society</title>
     <link rel="shortcut icon" href="photo/UNICLUBb1.png">
 
+    <link rel="stylesheet" href="table.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -56,6 +57,9 @@
     }
     </style>
     <script>
+        if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
     function pop_up_success() {
         Swal.fire({
             icon: 'success',
@@ -104,33 +108,50 @@
                                 <table>
                                     <tr>
                                         <th style="width:90%;">
-                                            <h3 class="left">Event Name:
-                                                <input type="text" name="ename" class="form-control"
-                                                    value="<?php echo $data['E_Name'] ?>" style="width:50%;">
+                                            <h3 class="left">
+                                               <?php echo $data['E_Name'] ?>
                                             </h3>
                                         </th>
                                         <th></th>
                                         <td style="float:right; padding-left:30px;">
-                                            <form method="POST"><button class="button" name="save">&nbsp; Save &nbsp;
-                                                </button></form>
+                                        <form method="POST"><button class="button" name="join"><a
+                                                        href="CMT_Event.php"
+                                                        style="text-decoration: none; color:black;">&nbsp; Back
+                                                        &nbsp;
+                                                    </a></button></form>
                                         </td>
                                     </tr>
                                 </table><br>
-                                <div class="left">
-                                    <h6>Description:<input type="text" name="description" class="form-control"
-                                            value="<?php echo $data['E_Description'] ?>" style="width:55%;"></h6>
-                                    <h6>🏫 Organizer: &nbsp; <input type="text" name="cname" class="form-control"
-                                            value="<?php echo $data['C_Name'] ?>" style="width:55%;"></h6>
-                                    <h6>📅 Date: &nbsp;<input type="date" name="day" class="form-control"
-                                            value="<?php echo $data['E_Day'] ?>" style="width:55%;"></h6>
-                                    <h6>🕐 Time: &nbsp;<input type="time" name="time" class="form-control"
-                                            value="<?php echo $data['E_Time'] ?>" style="width:55%;"></h6>
-                                    <h6>⌛ Duration: &nbsp;<input type="text" name="duration" class="form-control"
-                                            value="<?php echo $data['E_Duration'] ?>" style="width:55%;"></h6>
-                                </div><br>
-                            </div>
+                                <?php } ?>
+                                <table style="width:90%; margin:auto;" class="styled-table">
+                                    <thead>
+                                        <tr>
+                                            <th>TP</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $sql11="SELECT a.*, c.* FROM event_participant c, student_acc a WHERE c.E_ID = '$EID' AND c.TP = a.TP  ";
+              $result11 = mysqli_query($con, $sql11);
+            while ($show = mysqli_fetch_array($result11)) { 
+            ?>
+                                        <tr>
+
+                                                <td><?php echo $show["TP"]; ?></td>
+                                                <td><?php echo $show["S_Name"]; ?></td>
+                                                <td><?php echo $show["S_Email"]; ?></td>
+                                                <td><?php if($show["attend"]=='Absent'){?><button class="button" name="attend"
+                                            type="submit">✅</button><?php } ?>
+                                            <?php if($show["attend"]=='Present'){?>Attended  <?php } ?></td>
+                                  
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                         </div><br>
-                        <?php } ?>
+                
                     </div>
                 </form>
                 <br>
@@ -143,16 +164,12 @@
 </html>
 
 <?php 
-            if(isset($_POST['save'])) {
-                $ename = $_POST['ename'];
-                $cname = $_POST['cname'];
-                $description = $_POST['description'];
-                $day = $_POST['day'];
-                $time = $_POST['time'];
-                $duration = $_POST['duration'];
-                $query2 = "UPDATE `event` SET `E_Name`='$ename',`E_Day`='$day',`E_Time`='$time',`E_Duration`='$duration',`E_Description`='$description' WHERE E_ID='$EID'";
+            if(isset($_POST['attend'])) {
+              
+                $query2 = "UPDATE `event_participant` SET `attend`='Present' WHERE E_ID='$EID'";
                 $result = mysqli_query($con, $query2);
-                echo "<script>pop_up_success()</script>";
+                echo  "<script>window.location.reload(true);</script>"; 
+            
                 }
             
 

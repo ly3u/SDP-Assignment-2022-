@@ -20,7 +20,9 @@
 ?>
 
 <head>
-    <title>Events</title>
+    <title>APU Club adn Society</title>
+    <link rel="shortcut icon" href="photo/UNICLUBb1.png">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -74,20 +76,20 @@
     }
 
     function pop_up_success_c() {
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Report Submitted Successfully!',
-            showDenyButton: false,
-            showCancelButton: false,
-            confirmButtonText: '<a href="CMT_Event.php" style="text-decoration:none; color:white; ">Continue</a>',
-            showClass: {
-                popup: 'animate_animated animate_fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate_animated animate_fadeOutUp'
-            }
-        })
+    Swal.fire({
+    icon: 'success',
+    title: 'Success',
+    text: 'Report Submitted Successfully!',
+    showDenyButton: false,
+    showCancelButton: false,
+    confirmButtonText: '<a href="CMT_Event.php" style="text-decoration:none; color:white; ">Continue</a>',
+    showClass: {
+    popup: 'animate_animated animate_fadeInDown'
+    },
+    hideClass: {
+    popup: 'animate_animated animate_fadeOutUp'
+    }
+    })
     };
     </script>
 </head>
@@ -140,7 +142,7 @@
                                         <h3 class="left"><?php echo $data["E_Name"]; ?></h3>
                                     </th>
                                     <th></th>
-                                    <td style="float:right; padding-left:200px;">
+                                    <td style="float:right; padding-left:90px;">
                                         <input type="hidden" name="eid" id="Eid" value="<?php echo $data['E_ID'];?>">
                                         <form method="POST"><button class="button" name="join"
                                                 onclick="openForm(); event.preventDefault(); ">&nbsp; Submit Report
@@ -148,7 +150,13 @@
                                             </button><button class="button" name="join"><a
                                                     href="CMT_EventEdit.php?Eid=<?php echo $data['E_ID'] ?>"
                                                     style="text-decoration: none; color:black;">&nbsp; Edit &nbsp;
-                                                </a></button></form>
+                                                </a></button>
+                                            <button class="button" name="join"><a
+                                                    href="CMT_EventParticipant.php?Eid=<?php echo $data['E_ID'] ?>"
+                                                    style="text-decoration: none; color:black;">&nbsp; Participant
+                                                    &nbsp;
+                                                </a></button>
+                                        </form>
                                     </td>
                                 </tr>
                             </table><br>
@@ -229,16 +237,6 @@
         <form action="" method="post" class="form-container">
             <h1>Report</h1>
             <input type="hidden" id='myText' name='id'>
-            <table>
-                <tr>
-                    <th style="width:250px;">Number of Applicants: </th>
-                    <td><input type="number" name="participant" style="width:50%;"></td>
-                </tr>
-                <tr>
-                    <th style="width:250px;">Number of Attendees: </th>
-                    <td><input type="number" name="attend" style="width:50%;"></td>
-                </tr>
-            </table><br>
             <h5>Comment</h5>
             <textarea type="text" placeholder="Enter Comment" rows="4" name="comment" required></textarea>
 
@@ -255,13 +253,21 @@
 
     if(isset($_POST['submit'])) {   
         $EID=$_POST['id'];
-        $participant = $_POST['participant'];
-        $attend = $_POST['attend'];
-        $review = $_POST['comment'];
+        $sql11="SELECT count(*)as participant FROM event_participant WHERE E_ID='$EID'";
+        $result11=mysqli_query($con, $sql11);
+        $row1=mysqli_fetch_assoc($result11);
+        $part = $row1['participant'];
+  
+        $sql111="SELECT count(*)as participant FROM event_participant WHERE E_ID='$EID' AND attend='Present'";
+        $result111=mysqli_query($con, $sql111);
+        $row11=mysqli_fetch_assoc($result111);
+        $att = $row11['participant'];
+   
+        $review = $_POST['comment']; 
 
        
         echo  "<script>pop_up_success_c()</script>";
-        $feedbackSQL = "INSERT INTO `event_report`(`E_ID`, `No`, `participant`, `attend`, `Comment`) VALUES ('$EID','','$participant','$attend','$review')";
+        $feedbackSQL = "INSERT INTO `event_report`(`E_ID`, `No`, `participant`, `attend`, `Comment`) VALUES ('$EID','','$part','$att','$review')";
         $feedbackResult = mysqli_query($con, $feedbackSQL);
         $feedbackSQL1 = "UPDATE `event` SET `E_Status`='Ended' WHERE E_ID = '$EID'";
         $feedbackResult1 = mysqli_query($con, $feedbackSQL1);

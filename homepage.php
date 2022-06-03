@@ -22,10 +22,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>APU Club and Society</title>
+    <script src="animation.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="homepage and event css.css">
+    <link rel="shortcut icon" href="photo/UNICLUBb1.png">
 
     <style>
     .carousel-item {
@@ -87,8 +89,12 @@
         }
     ?>
     <!-- carousel start -->
-    <br>
-    <div class="container">
+    <br><center>
+    <h1><a href="" class="typewrite" data-period="2000"
+                    data-type='[ "Asia Pacific University", "Club and Society Management System","UniClub"]'style="text-decoration: none; color:white;">
+                    <span class="wrap"></span>
+                </a></h1>
+    </center>    <div class="container">
         <div class="row">
             <div class="col">
                 <div class="container">
@@ -152,8 +158,8 @@
                         </div>
                         <div class="col-8">
                             <h1 align="left">About Us</h1><br>
-                            <h4 align="left">The APU Club and Society Management System is designed by the UniClub sdn bhd.</h4>
-                            <h4 align="left">The .</h4>
+                            <h4 align="left">The APU Club and Society Management System is designed by the UniClub sdn bhd.
+                           Uniclub provide a user friendly platform to every user in the organization. We aim to assist the university to manage the clubs and societies efficiently. </h4>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <link rel="shortcut icon" href="photo/UNICLUBb1.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>  
     <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="b.css">

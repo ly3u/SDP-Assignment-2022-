@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="anibutton.css">
     <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="popup.css">
+    <link rel="shortcut icon" href="photo/UNICLUBb1.png">
+
     <style>
     .button {
         text-align: center;

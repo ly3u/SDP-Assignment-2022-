@@ -1,6 +1,6 @@
 <?php  
 include "config.php";
- $query = "SELECT (SELECT * FROM event_participant WHERE E_ID = 'E0001' )as number, * FROM event_report GROUP BY attend ";  
+ $query = "SELECT attend, count(*) as number FROM event_participant WHERE E_ID='E0002' GROUP BY attend";  
  $result = mysqli_query($con, $query);  
  ?>  
  <!DOCTYPE html>  

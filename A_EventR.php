@@ -11,6 +11,8 @@
     $A_id = $row['A_ID'];
     $EID = $_GET['eid']; 
 
+    $query = "SELECT attend, count(*) as number FROM event_participant WHERE E_ID='$EID' GROUP BY attend";  
+ $result = mysqli_query($con, $query); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
+    <link rel="shortcut icon" href="photo/UNICLUBb1.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -85,6 +88,30 @@
         })
     }
     </script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+           <script type="text/javascript">  
+           google.charts.load('current', {'packages':['corechart']});  
+           google.charts.setOnLoadCallback(drawChart);  
+           function drawChart()  
+           {  
+                var data = google.visualization.arrayToDataTable([  
+                          ['Gender', 'Number'],  
+                          <?php  
+                          while($row = mysqli_fetch_array($result))  
+                          {  
+                               echo "['".$row["attend"]."', ".$row["number"]."],";  
+                          }  
+                          ?>  
+                     ]);  
+                var options = {  
+                      title: 'Percentage of Attendance',  
+                      //is3D:true,  
+                      pieHole: 0.4  
+                     };  
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
+                chart.draw(data, options);  
+           }  
+           </script>  
 </head>
 
 <body>
@@ -126,8 +153,9 @@
                                                     </a></button></form>
                                     </td>
                                 </tr>
-                            </table><br>
+                            </table>
                             <?php } ?>
+                            <div id="piechart" style="width: 900px; height: 500px; margin:auto;"></div>
                             <?php $sql11="SELECT * FROM event_report  WHERE E_ID = '$EID'";
         $result11 = mysqli_query($con, $sql11);
         while ($dat = mysqli_fetch_array($result11)) { 
