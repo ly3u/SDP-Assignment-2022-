@@ -38,6 +38,35 @@
         border: 2px solid #4CAF50;
         border-radius: 1em;
     }
+    .footer-basic {
+        position: relative;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+        color: #4b4c4d;
+        width: 100%;
+        list-style: none;
+        text-align: center;
+        font-size: 18px !important;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    .footer-basic a {
+        color: inherit;
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    .footer-basic :hover {
+        background-color: #b9b9b9;
+        opacity: 1;
+    }
+
+    .copyright {
+        font-size: 13px;
+        color: black;
+        width: 110px;
+    }
     </style>
 </head>
 
@@ -116,7 +145,15 @@
         </div>
     </div>
     </div>
-    </div>
+    </div><footer>
+        <div class="footer-basic">
+            <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="S_ClubSport.php">Club</a>&emsp;&emsp;&emsp;<a
+                href="S_Event.php">Event</a>&emsp;&emsp;&emsp;<a href="ContactUs.php">Contact Us</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>

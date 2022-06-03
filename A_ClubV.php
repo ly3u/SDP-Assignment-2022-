@@ -33,6 +33,7 @@ $aid=$_SESSION['admin'];
 
 <head>
     <title>APU Club and Society </title>
+    <link rel="stylesheet" href="footer.css">
     <link rel="shortcut icon" href="photo/UNICLUBb1.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="popup.css">
@@ -179,6 +180,17 @@ $aid=$_SESSION['admin'];
         </div>
         <br>
     </div>
+    <br><hr>
+    <footer>
+        <div class="footer-basic">
+            <a href="A_Homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="A_Club.php">Clubs</a>&emsp;&emsp;&emsp;<a
+                href="A_Events.php">Events</a>&emsp;&emsp;&emsp;<a
+                href="A_Student.php">Students</a>&emsp;&emsp;&emsp;<a href="A_Help.php">Help</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
 </body>
 
 </html>

@@ -166,7 +166,8 @@
                         </div>
                         <div class="col-8">
                             <h1 align="left">About Us</h1><br>
-                            <h4 align="left">collaboration with Uniclub ..........</h4>
+                            <h4 align="left">The APU Club and Society Management System is designed by the UniClub sdn bhd.
+                           Uniclub provide a user friendly platform to every user in the organization. We aim to assist the university to manage the clubs and societies efficiently. </h4>
                         </div>
                     </div>
                 </div>
@@ -175,16 +176,18 @@
     </section>
     <br><br>
 
-    <br><br>
-    <hr>
-    <div class="footer-basic">
-        <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a
-            href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a
-            href="contactus.php">Contact Us</a>
-    </div>
-    <center>
-        <p class="copyright">UniClub © 2022</p>
-    </center>
+    <br>
+    <br><hr>
+    <footer>
+        <div class="footer-basic">
+            <a href="A_Homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="A_Club.php">Clubs</a>&emsp;&emsp;&emsp;<a
+                href="A_Events.php">Events</a>&emsp;&emsp;&emsp;<a
+                href="A_Student.php">Students</a>&emsp;&emsp;&emsp;<a href="A_Help.php">Help</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
 
 
 

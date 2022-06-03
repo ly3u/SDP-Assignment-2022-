@@ -28,6 +28,8 @@
     <link rel=”stylesheet” href="profile.css" crossorigin=”anonymous”>
     <link rel="stylesheet" href="anibutton.css">
     <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="footer.css">
+
     <link rel="shortcut icon" href="photo/UNICLUBb1.png">
 
     <style>
@@ -126,6 +128,15 @@
     </div>
     </div>
     </div>
+    <footer>
+        <div class="footer-basic">
+            <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="S_ClubSport.php">Club</a>&emsp;&emsp;&emsp;<a
+                href="S_Event.php">Event</a>&emsp;&emsp;&emsp;<a href="ContactUs.php">Contact Us</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>

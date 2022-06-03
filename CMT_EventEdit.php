@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society</title>
     <link rel="shortcut icon" href="photo/UNICLUBb1.png">
-
+    <link rel="stylesheet" href="footer.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -138,6 +138,15 @@
         </div>
 
     </div>
+    <footer>
+        <div class="footer-basic">
+            <a href="CMT_Homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="CMT_ClubMember.php">Member</a>&emsp;&emsp;&emsp;<a
+                href="CMT_Event.php">Event</a>&emsp;&emsp;&emsp;<a href="CMT_ContactUs.php">Contact Us</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
 </body>
 
 </html>

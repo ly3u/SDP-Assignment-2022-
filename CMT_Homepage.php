@@ -34,6 +34,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="popup.css">
     <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="footer.css">
+
     <script>
     // Stop sending sql on browser refresh
     if (window.history.replaceState) {
@@ -159,6 +161,15 @@
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
+    <footer>
+        <div class="footer-basic">
+            <a href="CMT_Homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="CMT_ClubMember.php">Member</a>&emsp;&emsp;&emsp;<a
+                href="CMT_Event.php">Event</a>&emsp;&emsp;&emsp;<a href="CMT_ContactUs.php">Contact Us</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
 </body>
 
 </html>

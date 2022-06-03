@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APU Club and Society </title>
     <link rel="shortcut icon" href="photo/UNICLUBb1.png">
-
+    <link rel="stylesheet" href="footer.css">
     <!-- CSS Style -->
     <script src="animation.js"></script>
 
@@ -196,6 +196,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
+   
 </body>
 
 </html>

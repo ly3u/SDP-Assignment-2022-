@@ -36,6 +36,7 @@
 <head>
     <title>APU Club and Society </title>
     <link rel="shortcut icon" href="photo/UNICLUBb1.png">
+    <link rel="stylesheet" href="footer.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <script>
@@ -179,6 +180,15 @@
                 </div>
             </div>
         </div>
+        <footer>
+        <div class="footer-basic">
+            <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="S_ClubSport.php">Club</a>&emsp;&emsp;&emsp;<a
+                href="S_Event.php">Event</a>&emsp;&emsp;&emsp;<a href="ContactUs.php">Contact Us</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
 </body>
 
 </html>

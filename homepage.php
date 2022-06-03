@@ -48,33 +48,40 @@
     .left {
         padding-left: 30px;
     }
+
     .footer-basic {
-    position: relative;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    color:#4b4c4d;
-    width: 100%;
-    list-style:none;
-    text-align:center;
-    font-size:18px !important;
-    line-height:1.6;
-    margin-bottom:0;
-}
-.footer-basic a {
-    color:inherit;
-    text-decoration:none;
-    opacity:0.8;
-}
-.footer-basic :hover {
-    background-color: #b9b9b9;
-    opacity:1;
-}
-.copyright {
-    font-size:13px;
-    color:black;
-    width: 110px;
+        position: relative;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+        color: #4b4c4d;
+        width: 100%;
+        list-style: none;
+        text-align: center;
+        font-size: 18px !important;
+        line-height: 1.6;
+        margin-bottom: 0;
     }
-* {box-sizing:border-box}
+
+    .footer-basic a {
+        color: inherit;
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    .footer-basic :hover {
+        background-color: #b9b9b9;
+        opacity: 1;
+    }
+
+    .copyright {
+        font-size: 13px;
+        color: black;
+        width: 110px;
+    }
+
+    * {
+        box-sizing: border-box
+    }
     </style>
 </head>
 
@@ -89,12 +96,15 @@
         }
     ?>
     <!-- carousel start -->
-    <br><center>
-    <h1><a href="" class="typewrite" data-period="2000"
-                    data-type='[ "Asia Pacific University", "Club and Society Management System","UniClub"]'style="text-decoration: none; color:white;">
-                    <span class="wrap"></span>
-                </a></h1>
-    </center>    <div class="container">
+    <br>
+    <center>
+        <h1><a href="" class="typewrite" data-period="2000"
+                data-type='[ "Asia Pacific University", "Club and Society Management System","UniClub"]'
+                style="text-decoration: none; color:white;">
+                <span class="wrap"></span>
+            </a></h1>
+    </center>
+    <div class="container">
         <div class="row">
             <div class="col">
                 <div class="container">
@@ -158,8 +168,10 @@
                         </div>
                         <div class="col-8">
                             <h1 align="left">About Us</h1><br>
-                            <h4 align="left">The APU Club and Society Management System is designed by the UniClub sdn bhd.
-                           Uniclub provide a user friendly platform to every user in the organization. We aim to assist the university to manage the clubs and societies efficiently. </h4>
+                            <h4 align="left">The APU Club and Society Management System is designed by the UniClub sdn
+                                bhd.
+                                Uniclub provide a user friendly platform to every user in the organization. We aim to
+                                assist the university to manage the clubs and societies efficiently. </h4>
                         </div>
                     </div>
                 </div>
@@ -187,13 +199,16 @@
                         <div class="col">
                             <div
                                 style="border-style:solid white; background-color:white; border-spacing: 15px; border-radius: 25px;">
-                                <a href="S_EventDetail.php?Eid=<?php echo $row['E_ID'] ?>" style="text-decoration: none; color:black;"><img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['E_Banner']); ?>"
-                                    alt=""
-                                    style="height:250px; width: 522px; object-fit: fill; border-radius: 25px 25px 0px 0px;"><br>
-                                <br>
-                                <h4>
-                                    <center><?php echo $row["E_Name"]; ?></center>
-                                </h4></a><br>
+                                <a href="S_EventDetail.php?Eid=<?php echo $row['E_ID'] ?>"
+                                    style="text-decoration: none; color:black;"><img
+                                        src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['E_Banner']); ?>"
+                                        alt=""
+                                        style="height:250px; width: 522px; object-fit: fill; border-radius: 25px 25px 0px 0px;"><br>
+                                    <br>
+                                    <h4>
+                                        <center><?php echo $row["E_Name"]; ?></center>
+                                    </h4>
+                                </a><br>
                             </div>
                         </div>
                         <?php }} ?>
@@ -202,7 +217,9 @@
                 </div>
 
                 <center>
-                    <a href="S_Event.php" style=" color:black;"><h4>See More</h4></a>
+                    <a href="S_Event.php" style=" color:black;">
+                        <h4>See More</h4>
+                    </a>
                 </center><br>
             </div>
 
@@ -210,10 +227,15 @@
     </div>
     <br><br>
     <hr>
-    <div class="footer-basic">
-        <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="addtocart.php">Products</a>&emsp;&emsp;&emsp;<a href="aboutus.php">About</a>&emsp;&emsp;&emsp;<a href="login.php">Login</a>&emsp;&emsp;&emsp;<a href="contactus.php">Contact Us</a>
-    </div>
-    <center><p class="copyright">UniClub © 2022</p></center>
+    <footer>
+        <div class="footer-basic">
+            <a href="homepage.php">Home</a>&emsp;&emsp;&emsp;<a href="S_ClubSport.php">Club</a>&emsp;&emsp;&emsp;<a
+                href="S_Event.php">Event</a>&emsp;&emsp;&emsp;<a href="ContactUs.php">Contact Us</a>
+        </div>
+        <center>
+            <p class="copyright">UniClub © 2022</p>
+        </center>
+    </footer>
 
 
 
