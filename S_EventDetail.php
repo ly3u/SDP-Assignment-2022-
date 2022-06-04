@@ -179,7 +179,7 @@
                         
                         $tp = $row['TP'];
                         echo  "<script>pop_up_success()</script>";
-                        $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`,`attend`) VALUES ('$EID','$tp','0')";
+                        $sql2 ="INSERT INTO `event_participant`(`E_ID`, `TP`,`attend`) VALUES ('$EID','$tp','Absent')";
                         $result2 = mysqli_query($con, $sql2);
                     }
                 }else{

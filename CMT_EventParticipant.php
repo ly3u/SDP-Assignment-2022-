@@ -85,7 +85,7 @@
         include 'nav_club.php'; 
     ?>
     <b><br>
-        <h1 align="center">Edit Event</h1><br>
+        <h1 align="center">Event Participant</h1><br>
         <hr>
     </b>
 

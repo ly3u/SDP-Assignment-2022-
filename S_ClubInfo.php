@@ -109,7 +109,11 @@
                 style="width:250px; height:250px; margin-top: 25px;">
         </div><br>
         <div class="bd-example">
-            <?php if(isset($email)){ 
+            <?php
+            $sql101 = "SELECT * FROM club_member WHERE C_ID='$CID' AND TP='$tp'";
+            $result101 = mysqli_query($con, $sql101);
+            $X =mysqli_num_rows($result101); 
+            if($X > 1){ 
                     echo '<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner" style=" border-radius: 25px;">
